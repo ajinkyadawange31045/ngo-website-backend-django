@@ -1,0 +1,159 @@
+{% extends 'base/base_other_pages.html' %} {% load static %}
+
+{% block title %}
+  {{ post.title|safe }} | Utkrishta Bharath | NITK | The Glorious India | UB
+{% endblock %}
+
+{% block extra_head_tags %}
+  <meta name="description" content="{{ post.excerpt }}" />
+  <meta name="keywords" content="{{ post.tags_for_seo_and_search_bar_in_website }}" />
+  <meta name="author" content="{{ post.author }}" />
+  <link rel="icon" href="/media/{{ post.thumbnail }}" type="image" />
+{% endblock %}
+
+{% block content %}
+  {% load social_share %}
+  <style>
+    .ard {
+      background-color: black;
+      height: 55vh;
+      width: 100vw;
+      margin-bottom: 14px;
+    }
+
+    #scroll-up {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
+      padding: 9px 20px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 1.3rem;
+      background-color: orange;
+      color: white;
+    }
+    #scroll-up.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: orange;
+      z-index: 9998;
+    }
+
+    .page-bar{
+    min-height: 3em;
+    {% comment %} background-color: rgb(255, 252, 213); {% endcomment %}
+    align-content: center;
+    text-decoration: none;
+}
+
+  </style>
+
+
+  <div class="page-bar">
+    <div class="container">
+        <a href="/" class="text-decoration-none">Home</a> /
+        <a href="{% url 'category_page' %}" class="text-decoration-none">{{ post.category.title }}</a> /
+        {{ post.main_long_title|safe }}
+    </div>
+</div>
+
+
+
+  <!-- Page Content -->
+  <div class="page_content">
+    <div class="container">
+      <div class="row">
+        <!-- Post Content -->
+        <div class="col-lg-12">
+          <div class="shadow-lg px-5 py-2 my-4 bg-body rounded-3 justify-content-around">
+            
+
+            <!-- Post Body -->
+            <h2 class="text-center text-info my-2">{{ post.title|safe }}</h2>
+            <figure class="text-center my-4">
+              <img style="width: 50%;" src="/media/{{ post.thumbnail }}" class="img-fluid" alt="Image" />
+              <figcaption>{{ post.thumbnail_caption|safe }}</figcaption>
+            </figure>
+            <p>{{ post.content_before_image|safe }}</p>
+            
+            {% if post.image_for_post %}
+            <figure class="text-center my-4">
+              <img src="{{ post.image_for_post.url }}" class="img-fluid" alt="{{ post.caption_for_image }}" />
+              <figcaption>{{ post.caption_for_image }}</figcaption>
+            </figure>
+            {% endif %}
+
+            <p>{{ post.content_after_image|safe }}</p>
+
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">{{ post.quote_related_to_post|safe }}</p>
+              <footer class="blockquote-footer">{{ post.author_of_quote|safe }}</footer>
+            </blockquote>
+
+            <!-- Post Tags -->
+            <div class="my-4">
+              <ul class="list-inline">
+                {% for cat in cats %}
+                <li class="list-inline-item">
+                  <a href="/category/{{ cat.url }}" class="badge bg-secondary">{{ cat.title|safe }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+
+
+            
+
+            <!-- Related Posts -->
+            <div class="text-center mt-5">
+              <h4>Other Blogs</h4>
+              <div class="pt-3">
+                {% for i in latest %}
+                <a href="/blog/{{ i.url }}" class="blog-link btn btn-outline-secondary w-100 mb-2">{{ i.title }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div id="scroll-up" class="text-center">^</div>
+          <div id="scroll-progress"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.onscroll = function() {
+      const scrollProgress = document.getElementById("scroll-progress");
+      const scrollUp = document.getElementById("scroll-up");
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+      scrollProgress.style.width = scrollPercent + "%";
+
+      if (scrollTop > 300) {
+        scrollUp.classList.add("show");
+      } else {
+        scrollUp.classList.remove("show");
+      }
+    };
+
+    document.getElementById("scroll-up").onclick = function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  </script>
+{% endblock %}

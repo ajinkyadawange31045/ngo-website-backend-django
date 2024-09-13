@@ -1,0 +1,880 @@
+
+
+/*********************************
+5. Home Section
+*********************************/
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.home {
+    width: 100%;
+    height: 100vh;
+}
+
+.showcase {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.showcase.active {
+    right: 30px;
+}
+
+.showcase video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    z-index: -1;
+}
+
+/* Responsive video styles */
+@media (max-width: 998px) {
+    .showcase video {
+        object-fit: cover;
+        opacity: 0.85;
+        z-index: -1;
+    }
+}
+
+/*********************************
+6. Overlay
+*********************************/
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #717171;
+    mix-blend-mode: overlay;
+}
+
+/*********************************
+7. Text Section
+*********************************/
+
+.textard {
+    position: relative;
+    z-index: 1;
+}
+
+.textard h2 {
+    font-size: 3em;
+    font-weight: 50;
+    color: #fff;
+    line-height: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.textard h5 {
+    font-size: 1em;
+    font-weight: 50;
+    color: #fff;
+}
+
+.textard p {
+    font-size: 1.1em;
+    color: #fff;
+    margin: 2px 0;
+    font-weight: 400;
+}
+
+.textard a {
+    display: inline-block;
+    font-size: 1em;
+    background: #fff;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    color: #111;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+.textard a:hover {
+    letter-spacing: 6px;
+}
+
+/* Ensure the text overlay adapts to smaller screens */
+@media (max-width: 768px) {
+    .textard h2 {
+        font-size: 1.8em;
+    }
+
+    .textard p {
+        font-size: 1em;
+    }
+
+    .textard a {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+}
+
+/* Additional improvements for very small screens */
+@media (max-width: 480px) {
+    .textard h2 {
+        font-size: 1.5em;
+    }
+
+    .textard p {
+        font-size: 0.9em;
+    }
+
+    .textard a {
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
+}
+
+/*********************************
+8. Social Icons
+*********************************/
+
+.social {
+    position: absolute;
+    z-index: 10;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.social li {
+    list-style: none;
+}
+
+.social li a {
+    display: inline-block;
+    margin-right: 10px;
+    filter: invert(1);
+    transform: scale(0.5);
+    transition: 0.5s;
+}
+
+.social li a:hover {
+    transform: scale(0.5) translateY(-15px);
+}
+
+
+
+
+/*********************************
+9.  What We Do 
+*********************************/
+.circle {
+    width: 240px;
+    margin: 15px auto;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.how_wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.we_work_wrap {
+    width: auto;
+    margin: 0;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-img {
+    width: 15rem;
+    height: 15rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    padding: 20px !important;
+    margin-top: 20px;
+    border: 10px solid #fbebbe;
+    transition: border-color 0.3s ease;
+}
+
+
+.circle-img:hover {
+    border-color: #ffe135;
+}
+
+.we_work_wrap h5 {
+    text-align: center;
+    padding: 8px;
+    color: #000000;
+    margin-top: 15px;
+    width: 100%;
+    word-break: break-word;
+    font-family: 'MontserratRegular';
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .we_work_wrap {
+        margin-bottom: 20px;
+    }
+
+    .circle-img {
+        width: 19rem;
+        height: 19rem;
+    }
+
+    .we_work_wrap h5 {
+        font-size: 14px;
+    }
+}
+.impact_wrap {
+    background-color: #ffc107;
+    min-height: 300px; /* Minimum height */
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Apply this to images inside the impact_wrap */
+.impact_wrap img {
+    width: 100%; /* Ensure the image takes up the full width of the container */
+    height: 100%; /* Ensures the image takes up the full height of the container */
+    object-fit: cover; /* This maintains the aspect ratio and ensures the image covers the container */
+    object-position: center; /* This centers the image within the container */
+    border-radius: 10px; /* Optional: Keeps the rounded corners */
+}
+
+/*********************************
+11. corousel
+*********************************/
+.dream_img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dream_img img:hover {
+    transform: scale(1.05);
+}
+
+.dream_content h5 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.quotescontent p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.221);
+    border-radius: 50%;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: .5;
+    transition: opacity .15s ease;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover {
+    opacity: 0.9;
+}
+
+/* Media Queries for Responsive Adjustments */
+@media (max-width: 900px) {
+    .dream_content h5 {
+        font-size: 20px;
+    }
+    .quotescontent p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dream_content h5 {
+        font-size: 18px;
+    }
+    .quotescontent p {
+        font-size: 13px;
+    }
+
+    .dream_img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel-control-next, .carousel-control-prev {
+        width: 20%;
+    }
+}
+
+@media (max-width: 576px) {
+    .dream_content h5 {
+        font-size: 16px;
+    }
+    .quotescontent p {
+        font-size: 12px;
+    }
+
+    .dream_img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel-control-next, .carousel-control-prev {
+        width: 25%;
+    }
+}
+
+.heading_section{
+    font-weight: bold;
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stories_section {
+    width: 80%;
+    margin: auto;
+    display: block;
+}
+@media (max-width: 767px) {
+    .stories_section {
+        width: 100%;
+        margin: auto;
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .stories_section {
+        width: 100%;
+        margin: auto;
+        display: block;
+    }
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+/*********************************
+12. ministriesGrid
+*********************************/
+.ministriesGrid {
+    font-size: 0;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Adjust to start instead of space-between */
+    align-items: center;
+    margin: 0; /* Remove any extra margin */
+    padding: 0; /* Remove any extra padding */
+    overflow: hidden; /* Prevent overflow visually */
+}
+
+.ministriesGrid-item {
+    flex: 1 1 calc(50% - 10px); /* Adjust to account for margin */
+    margin: 5px; /* Set margin to create space between items */
+    position: relative;
+    background: #000;
+    height: 150px;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+@media (min-width: 768px) {
+    .ministriesGrid-item {
+        flex: 1 1 calc(48% - 10px); /* Adjust for medium screens */
+        height: 200px; /* Adjust height */
+    }
+}
+
+@media (min-width: 992px) {
+    .ministriesGrid-item {
+        flex: 1 1 calc(25% - 10px); /* Adjust for larger screens */
+        height: 200px; /* Maintain height */
+    }
+}
+
+
+.js-showOnHoverParent:hover .ministriesGrid-overlay {
+    opacity: 0.91; /* Show overlay on hover */
+}
+
+.u-showOnHover {
+    opacity: 0;
+    transition: all .35s;
+}
+
+.ministriesGrid-item {
+    font-size: 16px;
+/*    -webkit-box-flex: 1;
+    -ms-flex: 1 1 50%;
+    flex: 1 1 50%; */
+    
+    position: relative;
+    background: #000;
+    /* height: 150px; */
+    overflow: hidden; 
+}
+
+
+.ministriesGrid-image.lazyloaded {
+    width: 100%;
+    height: 100%;
+    opacity: .8;
+}
+
+.ministriesGrid-image {
+    -o-object-fit: cover;
+    object-fit: cover;
+    opacity: 0;
+    float: left;
+    -webkit-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    min-height: 100%;
+}
+
+.ministriesGrid-link {
+    text-decoration: none;
+    display: block;
+    color: #000;
+    height: 100%;
+}
+
+.ministriesGrid-title {
+    color: #fff;
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    opacity: 1;
+    -webkit-transition: opacity .35s;
+    -o-transition: opacity .35s;
+    transition: opacity .35s;
+    font-weight: 600;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .25);
+    padding: 0 10px;
+    line-height: 1.2;
+    z-index: 2;
+    text-align: center;
+}
+
+.ministriesGrid-title,
+    .section-subtitle,
+    .section-title,
+    .seeWhatsHappening,
+    .u-textCenter {
+        text-align: center;
+    }
+
+.ministriesGrid-overlay {
+    background: #fbebbe;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        border: none;
+        /* Remove existing border */
+        transform: scale(1);
+        /* Initial scale */
+        transition: transform 0.3s ease-in-out;
+        /* Smooth transition */}
+
+.ministriesGrid-link:hover .ministriesGrid-overlay {
+    border: 2px solid #111; /* Add border on hover */
+    transform: scale(1.05); /* Zoom in slightly on hover */
+}
+
+.ministriesGrid-content {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 0 10px;
+}
+
+.ministriesGrid-caption {
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.btn-black.btn-inverse {
+    background-color: transparent;
+    border-color: #111;
+    color: #111;
+}
+
+.ministriesGrid-btn {
+    max-width: 100%;
+    font-size: 12px;
+    margin: 10px 10px;
+}
+    .btn-black.btn-inverse.rowDonate-btn,
+    .btn-black.btn-inverse.rowDonate-submit,
+    .btn-black.btn-inverse.submit,
+    .btn.btn-black.btn-inverse,
+    input.btn-black.btn-inverse[type=submit] {
+        background-color: transparent;
+        border-color: #111;
+        color: #111;
+    }
+
+    .btn-black.rowDonate-btn,
+    .btn-black.rowDonate-submit,
+    .btn-black.submit,
+    .btn.btn-black,
+    input.btn-black[type=submit] {
+        border-color: #111;
+        color: #111;
+    }
+
+    .ministriesGrid-btn {
+        max-width: 100%;
+        font-size: 12px;
+        margin: 10px 10px;
+    }
+
+    .ministriesGrid-title,
+    .ministriesGrid-caption,
+    .ministriesGrid-btn {
+        transition: opacity 0.35s ease-in-out;
+        /* Smooth transition on hover */
+    }
+
+    .ministriesGrid-link:hover .ministriesGrid-title,
+    .ministriesGrid-link:hover .ministriesGrid-caption,
+    .ministriesGrid-link:hover .ministriesGrid-icon,
+    .ministriesGrid-link:hover .ministriesGrid-btn {
+        opacity: 1;
+        /* Show text and button on hover */
+    }
+
+  /*********************************
+13. About us
+*********************************/
+
+/* .vision_mision_sec h2.heading {
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: 'MontserratRegular';
+}
+
+.vision_mision_sec h2.heading {
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: 'MontserratRegular';
+}
+
+.vision_mision_sec .v_item {
+    position: relative;
+    margin-left: 15px;
+}
+
+.vision_mision_sec .content_wrap {
+    width: 100%;
+    padding: 0px 14px;
+    color: #626264;
+    line-height: 22px;
+} */
+.digit_static {
+    text-align: center;
+}
+
+.static_item {
+    text-align: center; /* Center-align text under images */
+    margin: 10px; /* Add some margin around each card */
+}
+
+.static_image {
+    width: 100%; /* Full width of the parent container */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #F4BC21; /* Border color */
+    border-radius: 8px; /* Optional: slightly rounded corners */
+}
+
+.content_wrap {
+    margin-top: 10px; /* Space between the image and the text */
+}
+
+.content_wrap h6 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Small screens (default mobile view) */
+@media (max-width: 767px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align all items */
+    }
+    
+    .static_item {
+        width: 80%; /* Ensure items take more width on small screens */
+        margin-bottom: 20px; /* Uniform margin-bottom */
+    }
+    
+    .static_image {
+        max-width: 100%; /* Full width for image */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+    .content_wrap h6 {
+        font-size: 0.875rem; /* Smaller text size for small screens */
+        text-align: center; /* Center align text */
+    }
+}
+
+/* Medium screens (two rows layout) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* Add some space between rows */
+    }
+
+    .static_item {
+        flex: 0 0 45%; /* Two items per row */
+        max-width: 100%; 
+        margin-bottom: 30px;
+    }
+
+    .static_item img {
+        max-width: 100%; /* Adjust to maintain image size */
+    }
+}
+
+/* Large screens (default desktop view) */
+@media (min-width: 992px) {
+    .static_item {
+        flex: 0 0 18%; /* Adjust as necessary to fit all items in one row */
+        max-width: 100%;
+    }
+}
+
+/* Hover effect for images */
+.static_item img:hover {
+    border-color: #F4BC21; /* Add your preferred border color here */
+}
+
+
+
+
+
+
+
+.offset1 {
+    border-left: 4px solid #F4BC21; /* Vertical line color */
+    padding-left: 30px; /* Increased padding for spacing */
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add margin-bottom for spacing */
+}
+
+.vision-content {
+    margin-top: 20px;
+}
+
+.vision-item {
+    margin-bottom: 20px;
+}
+
+.vision-item h4,
+.vision-item p {
+    margin: 0 0 10px 0; /* Add bottom margin for spacing */
+}
+
+.btn-readmore {
+    margin-top: 20px;
+    background-color: #EE771D; /* Button color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-readmore:hover {
+    background-color: #D76518; /* Darker hover color */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .offset1 {
+        padding-left: 20px; /* Maintain spacing on smaller screens */
+        margin-top: 20px;
+    }
+
+    .vision-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vision-item {
+        margin-bottom: 15px;
+        padding-left: 0;
+    }
+
+    .vision-item h4,
+    .vision-item p {
+        margin: 0 0 10px 0;
+    }
+
+    .btn-readmore {
+        padding: 8px 16px;
+    }
+}
+
+/* Specific Adjustments for Very Small Screens */
+@media (max-width: 576px) {
+    .offset1 {
+        padding-left: 10px; /* Reduced padding for very small screens */
+        margin-top: 15px; /* Adjust margin if needed */
+    }
+
+    .vision-item {
+        margin-bottom: 10px; /* Adjust bottom margin */
+    }
+
+    .vision-item h4,
+    .vision-item p {
+        margin: 0 0 5px 0; /* Reduce spacing for very small screens */
+    }
+
+    .btn-readmore {
+        padding: 6px 12px; /* Smaller button padding for small screens */
+    }
+}
+
+
+
+
+/********************************
+Time line css
+*********************************/
+.timeline {
+    border-left: 1px solid hsl(0, 0%, 90%);
+    position: relative;
+    list-style: none;
+  }
+  
+  .timeline .timeline-item {
+    position: relative;
+  }
+  
+  .timeline .timeline-item:after {
+    position: absolute;
+    display: block;
+    top: 0;
+  }
+  
+  .timeline .timeline-item:after {
+    background-color: hsl(0, 0%, 90%);
+    left: -38px;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    content: "";
+  }
+
+
+  /*****************************
+  read more
+  *****************/
+  /* Default style for the anchor tag */
+.read-more {
+    color: blue;           /* Default text color */
+    text-decoration: none; /* No underline */
+    font-weight: bold;     /* Bold text */
+}
+
+/* Style on hover */
+.read-more:hover {
+    color: rgb(0, 0, 0);        /* Change text color on hover */
+    text-decoration: underline; /* Underline on hover */
+    cursor: pointer;       /* Change cursor to pointer */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.page-bar{
+    min-height: 3em;
+    align-content: center;
+    text-decoration: none;
+}
+
+.blog-link {
+    width: 100%; /* Spread horizontally to full width */
+    background-color: white;
+    border: 2px solid black;
+    text-align: center;
+    display: inline-block;
+    border-radius: 25px; /* Only round the corners */
+    padding: 15px; /* Add padding to make it look better */
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out; /* Smooth transition effect */
+    text-decoration: none; /* Remove underline */
+    color: black; /* Text color */
+}
+
+.blog-link:hover {
+    transform: translateY(-5px); /* Move up on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+    background-color: #f8f9fa; /* Slight background change on hover */
+    color: black;
+}
+
+

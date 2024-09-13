@@ -1,0 +1,60 @@
+
+
+/***************************************
+donation
+***************************************/
+.darkblue-bg {
+    background-color: #ffea96; /* Example dark blue background */
+    padding: 5rem 0; /* General padding */
+}
+
+.donate-btn_call_to_a {
+    display: inline-block; /* Makes the button behave like a button */
+    background: #4FB846; /* Button background color */
+    border-radius: 18px; /* Rounded corners */
+    font-size: 17px; /* Font size */
+    color: #ffffff; /* Text color */
+    font-family: 'Montserrat', sans-serif; /* Font family */
+    padding: 12px 34px; /* Increased padding for better touch target */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.donate-btn_call_to_a:hover {
+    background: #3ea033; /* Darker shade on hover */
+}
+
+
+
+
+
+/* footer section */
+.footersection {
+    background: #ebebeb;
+    width: 100%;
+    height: auto;
+    padding: 60px 0px;
+    padding-bottom: 0px;
+}
+
+.footer_links ul.footer_list li a {
+    color: #626264;
+    font-family: 'MontserratRegular';
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.footer_list {
+    padding-inline-start: 0px;
+    list-style: none;
+}
+
+.footer_links .color-head {
+    color: #626264;
+    font-family: 'MontserratRegular';
+    font-weight: bold;
+    font-weight: 0.9rem;
+    text-transform: uppercase;
+    font-size: 12px;
+}

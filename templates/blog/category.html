@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4">Categories</h1>
+    <div class="row">
+        {% for category in categories %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>{{ category.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ category.description }}</p>
+                    <ul class="list-unstyled">
+                        {% for post in category_posts|default_if_none:0 %}
+                        {% if post %}
+                        <li>
+                            <a href="/blog/{{ post.url }}">{{ post.title }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,347 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*********************************
+1. Animations
+*********************************/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomOutIn {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2); /* Zoom out */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Back to original position */
+    }
+}
+
+/*********************************
+2. Navigation
+*********************************/
+
+.nav-item {
+    opacity: 0; /* Initial state: hidden */
+}
+
+.nav-item .nav-link {
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.nav-item .nav-link:hover {
+    color: #ffc107 !important; /* Bootstrap 'text-warning' color */
+    transform: scale(1.1);
+}
+
+/*********************************
+3. Header
+*********************************/
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 72px;
+    width: 100%;
+    z-index: 100;
+    transition: background 0.3s;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 0 20px;
+    background: rgba(11, 9, 10, 0.696);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header_content {
+    height: 80px;
+    transition: all 200ms ease;
+}
+
+.header.scrolled {
+    background: rgba(11, 9, 10, 0.73);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header.scrolled .header_content {
+    height: 80px;
+}
+
+
+ /* Hover effect for the DONATE button */
+ .donate-btn {
+    font-weight: bold;
+    animation: zoomOutIn 0.8s ease-in-out forwards;
+    animation-delay: 1.0s;
+    background-color: rgb(18, 125, 1);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.donate-btn:hover {
+    background-color: rgb(36, 247, 12); /* Lighter green on hover */
+    
+    transform: scale(1.15); /* Slight zoom on hover */
+    color: #000000 !important; /* Bootstrap 'text-warning' color */
+    
+}
+
+/* Hover effect for the Login button */
+.login-btn {
+    font-weight: bold;
+    animation: zoomOutIn 0.8s ease-in-out forwards;
+    animation-delay: 1.0s;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+    background-color: rgb(255, 240, 30); /* Slightly darker orange on hover */
+    transform: scale(1.15); /* Slight zoom on hover */
+    color: #000000 !important; /* Bootstrap 'text-warning' color */
+}
+/*********************************
+3.2 Main Navigation
+*********************************/
+
+.main_nav {
+    margin-left: 46px;
+}
+
+.main_nav ul li {
+    display: inline-block;
+}
+
+.main_nav ul li:not(:last-child) {
+    margin-right: 24px;
+}
+
+.main_nav ul li a {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color:rgba(255, 255, 255, 1);
+    transition: all 200ms ease;
+}
+
+.main_nav ul li a:hover,
+.main_nav ul li.active a {
+    color: #F4BC21;
+}
+
+/* Responsive styles */
+@media (max-width: 998px) {
+    .header .main_nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(11, 9, 10, 0.7);
+        position: absolute;
+        top: 80px;
+        left: 0;
+    }
+
+    .header .main_nav.active {
+        display: flex;
+    }
+
+    .header .toggle_button {
+        display: block;
+    }
+}
+
+
+
+
+
+/*********************************
+9. Dropdown
+*********************************/
+/* Dropdown Styles */
+/* Dropdown Styles */
+.dropdownard {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu1 {
+    display: none;
+    position: absolute;
+    background-color: #080808f0;
+    width: 40rem; /* Fixed width for all dropdowns */
+    z-index: 1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.548);
+    padding: 10px;
+    left: 0; /* Fixed at the same position for all */
+    overflow: hidden;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #080808f0;
+    width: 40rem; /* Fixed width for all dropdowns */
+    z-index: 1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.548);
+    padding: 10px;
+    left: 0; /* Fixed at the same position for all */
+    overflow: hidden;
+    transform: translateX(-50%);
+}
+
+.dropdownard:hover .dropdown-menu1 {
+    display: block;
+}
+
+.dropdown-menu1 .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.dropdownard:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dropdown-item {
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide any overflowed content */
+    text-overflow: ellipsis; /* Adds "..." if text overflows */
+    padding: 8px 15px;
+    color: rgb(255, 255, 255);
+}
+
+.dropdown-item:hover {
+    background-color: #08080800;
+    color: #F4BC21;
+}
+.dropdown-item1 {
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide any overflowed content */
+    text-overflow: ellipsis; /* Adds "..." if text overflows */
+    padding: 8px 15px;
+    color: rgb(255, 255, 255);
+}
+
+.dropdown-item1:hover {
+    /* background-color: #08080800;
+    color: #F4BC21; */
+}
+
+.list-unstyled {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dropdown-menu1 {
+        width: 100%; /* Take full width on small screens */
+        position: static; /* No absolute positioning on small screens */
+    }
+    .dropdown-menu {
+        width: 100%; /* Take full width on small screens */
+        position: static; /* No absolute positioning on small screens */
+    }
+
+    .col-4, .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%; /* Stack columns vertically */
+        padding: 5px;
+        border: none; /* Remove borders on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .dropdown-menu1 {
+        padding: 5px; /* Reduce padding for smaller screens */
+    }
+    .dropdown-menu {
+        padding: 5px; /* Reduce padding for smaller screens */
+    }
+
+    .dropdown-item {
+        padding: 5px 10px; /* Reduce padding inside each item */
+        font-size: 14px; /* Slightly smaller font size for smaller screens */
+    }
+}
+
+
+
+
+
+/*********************************
+4. Offcanvas Trigger Button
+*********************************/
+
+.offcanvas-trigger {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    color: #fff;
+}
+
+@media (max-width: 998px) {
+    .header_content {
+        display: none;
+    }
+
+    .offcanvas-trigger {
+        display: block; /* Show the button when header_content is hidden */
+    }
+}
+
+
+
+/*************************************
+About page style
+************************************/
+
+.header1 {
+    position:relative;
+    top: 0;
+    left: 0;
+    height: 72px;
+    width: 100%;
+    z-index: 100;
+    transition: background 0.3s;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 0 20px;
+    background: rgb(0, 0, 0);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.header1.scrolled {
+    position: fixed;
+    background: rgba(11, 9, 10, 0.73);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header1.scrolled .header_content {
+    height: 80px;
+}
+
+
+
