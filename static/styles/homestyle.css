@@ -211,13 +211,13 @@
     border-radius: 50%;
     padding: 20px !important;
     margin-top: 20px;
-    border: 10px solid #fbebbe;
+    border: 10px solid #d6d6d6;
     transition: border-color 0.3s ease;
 }
 
 
 .circle-img:hover {
-    border-color: #ffe135;
+    border-color: #ffc107;
 }
 
 .we_work_wrap h5 {
@@ -229,6 +229,11 @@
     word-break: break-word;
     font-family: 'MontserratRegular';
     overflow-wrap: break-word;
+    
+}
+
+.we_work_wrap a{
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
@@ -850,7 +855,7 @@ Time line css
 }
 
 .page-bar{
-    min-height: 3em;
+    min-height: 2em;
     align-content: center;
     text-decoration: none;
 }
@@ -878,3 +883,70 @@ Time line css
 }
 
 
+/******************************
+box shadow for donations page
+*****************************/
+.shadow-float-ajinkya {
+    padding: 1rem 1.5rem; /* Increased padding for better spacing */
+    margin: 1.5rem 0;       /* Adjusted margin for consistent spacing */
+    background: #ffffff;   /* Keep a clean white background */
+    border-radius: 20px;   /* Rounded corners for a softer look */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Softer, more pronounced shadow */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.shadow-float-ajinkya:hover {
+    transform: translateY(-2px); /* Slight lift on hover for interactivity */
+}
+
+.contribution_form_section {
+    padding: 20px; /* Consistent padding */
+    border: none;
+    margin: 5px 5px; /* Adjusted margin for better alignment */
+    background: rgba(255, 255, 255, 0.9); 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(27, 27, 27, 0.1);  
+}
+
+.contribution_form_section .row {
+    margin: 0 0 12px; /* Adjusted margin */
+    font-size: 15px; /* Increased font size for readability */
+}
+
+.sponspor_text {
+    font-size: 18px; /* Larger font size for emphasis */
+    font-weight: 700;
+    color: #004e80; /* Keep the color scheme */
+    padding-top: 10px;
+    margin-bottom: 12px; /* Space below the sponsor text */
+}
+
+input {
+    padding: 10px; /* Consistent input padding */
+    font-size: 14px; /* Clear font size */
+    font-family: 'Raleway', sans-serif; /* Include fallback */
+    border: 1px solid #b2b2b2 !important; /* Maintain border styling */
+    border-radius: 20px; /* Fully rounded corners */
+    transition: border 0.3s; /* Smooth border change */
+}
+
+input:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+.amount_text {
+    font-size: 16px; /* Keep the font size */
+    font-weight: 700;
+    color: #2F6E9C; /* Maintain color scheme */
+}
+
+
+.full {
+    width: 100%;
+    border-radius: 10px; /* Slightly rounded corners for inputs */
+}
+
+.form-text {
+    font-size: 12px; /* Uniform font size for additional information */
+}

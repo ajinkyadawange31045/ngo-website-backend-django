@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from blog.views import home,category,post,category_page
+from blog.views import home,category,post,category_page,what_we_do1,what_we_do2,what_we_do3,what_we_do4
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -9,6 +9,11 @@ urlpatterns = [
     path('', home),
     path('blog/<slug:url>', post),
     path('category/', category_page, name='category_page'),  # New URL for category page
+    # url for what we do pages
+    path('donate-to-educational-enpowerment-program/',what_we_do1),
+    path('donate-to-moral-and-ethical-development/',what_we_do2),
+    path('donate-to-mental-health-and-wellbeing-program/',what_we_do3),
+    path('donate-to-cultural-enrichment-program/',what_we_do4),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

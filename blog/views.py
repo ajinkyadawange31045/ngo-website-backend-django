@@ -23,17 +23,23 @@ from django.contrib.auth import  authenticate,login,logout
 
 
 def home(request):
-
-    # latest updates
     # last 4 updates
     updates = Post.objects.all().order_by('-publish')[:4]
-    
-    
-    # return HttpResponse("Hello world!")
     # data
     data = {'updates':updates,}
     return render(request, "blog/index.html",data)
 
+def what_we_do1(request):
+    return render(request,'our_work/educational.html')
+
+def what_we_do2(request):
+    return render(request,'our_work/moral.html')
+
+def what_we_do3(request):
+    return render(request,'our_work/mental.html')
+
+def what_we_do4(request):
+    return render(request,'our_work/cultural.html')
 
 def post(request, url):
     remaining_categoreis = Category.objects.all()[::-1]

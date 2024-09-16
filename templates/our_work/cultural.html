@@ -1,0 +1,17 @@
+{% extends 'base/base_other_pages.html' %} {% load static %}
+
+{% block title %}
+  {{ post.title|safe }} | Utkrishta Bharath | NITK | The Glorious India | UB
+{% endblock %}
+
+{% block extra_head_tags %}
+  <meta name="description" content="{{ post.excerpt }}" />
+  <meta name="keywords" content="{{ post.tags_for_seo_and_search_bar_in_website }}" />
+  <meta name="author" content="{{ post.author }}" />
+  <link rel="icon" href="/media/{{ post.thumbnail }}" type="image" />
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}
