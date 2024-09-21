@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mptt',
     'blog',
     'initiatives',
+    'impact_stories',
 ]
 
 MIDDLEWARE = [

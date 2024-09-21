@@ -608,6 +608,22 @@
         opacity: 1;
         /* Show text and button on hover */
     }
+    
+    .ministriesGrid-link:hover .ministriesGrid-title,
+.ministriesGrid-link:hover .ministriesGrid-caption {
+    color: rgb(37, 37, 37); /* Change to your desired hover color */
+}
+
+.ministriesGrid-title,
+.ministriesGrid-caption {
+    transition: color 0.35s ease-in-out; /* Smooth transition for text color */
+}
+
+/* Ensure this part is intact */
+.ministriesGrid-item:hover .ministriesGrid-title,
+.ministriesGrid-item:hover .ministriesGrid-caption {
+    color: rgb(0, 0, 0); /* Change to your desired hover color */
+}
 
   /*********************************
 13. About us
@@ -964,3 +980,9 @@ modal responsive
         margin: auto; /* Center the modal horizontally */
     }
 }
+
+
+/***************
+youtube videos
+********************/
+

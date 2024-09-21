@@ -67,76 +67,57 @@
   <!-- Outer section with full-width background image -->
   <section class="impact_wrap">
     <!-- Inner container to hold the content with padding -->
-
     <div class="container py-3 align-content-center">
-      <div class="row">
-        <div class="col-12 text-center mb-30">
-          <h2 class="montregular heading_section color-white">Impact Stories</h2>
-        </div>
-      </div>
-      <!-- Bootstrap Carousel -->
-      <div id="impactCarousel" class="carousel slide stories_section" data-bs-ride="carousel">
-        <div class="carousel-inner my-3">
-          <div class="carousel-item active">
-            <div class="row align-self-center">
-              <div class="col-lg-4 col-md-4 col-12 dream_img align-self-center">
-                <img src="../images/1.jpeg" class="main_img" alt="Yashasvi Story" />
-              </div>
-              <div class="col-lg-7 col-md-7 dream_content col-12 align-self-center">
-                <div class="mt-20">
-                  <h5 class="color-white h5 montextralight pt-1">Yashasvi Dreams of Becoming a Paramedic and Help People in Distress</h5>
-                </div>
-                <div class="fs-16 quotescontent">
-                  <p>Yashasvi Desalli is a 12-year-old girl with an ambition that can solve her family’s ongoing financial instability. She lives with her parents and 2 younger siblings (brother and sister) in Dharwad, Karnataka.</p>
-                </div>
-                <div class="mt-10">
-                  <p class="montregular color-white">
-                    <a href="stories-of-children/yashasvi-dreams-of-becoming-a-paramedic-and-help-people-in-distress" target="_self">Read more...</a>
-                  </p>
-                </div>
-              </div>
-              <div class="col-lg-1 col-md-1"></div>
+        <div class="row">
+            <div class="col-12 text-center mb-30">
+                <h2 class="montregular heading_section color-white">Impact Stories</h2>
             </div>
-          </div>
-
-          <!-- Add more carousel items similarly -->
-          <div class="carousel-item">
-            <div class="row align-self-center">
-              <div class="col-lg-4 col-md-4 col-12 dream_img align-self-center">
-                <img src="../images/2.jpeg" class="main_img" alt="Gungun Story" />
-              </div>
-              <div class="col-lg-7 col-md-7 dream_content col-12 align-self-center">
-                <div class="mt-20">
-                  <h5 class="color-white h5 montextralight pt-1">Gungun Aspires to Become an English Teacher and Spread Knowledge</h5>
-                </div>
-                <div class="fs-16 quotescontent">
-                  <p>Gungun Kashyap is one of the 2.2 million beneficiaries of Akshaya Patra’s mid-day meal programme and wishes to become an English Teacher. Read her journey here.</p>
-                </div>
-                <div class="mt-10">
-                  <p class="montregular color-white">
-                    <a href="stories-of-children/gungun-aspires-become-an-english-teacher-and-spread-knowledge" target="_self">Read more...</a>
-                  </p>
-                </div>
-              </div>
-              <div class="col-lg-1 col-md-1"></div>
-            </div>
-          </div>
-
-          <!-- Additional carousel items go here -->
         </div>
+        <!-- Bootstrap Carousel -->
+        <div id="impactCarousel" class="carousel slide stories_section" data-bs-ride="carousel">
+            <div class="carousel-inner my-3">
 
-        <!-- Carousel Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#impactCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#impactCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+                <!-- Start looping through stories -->
+                {% for i in stories %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="row align-self-center">
+                        <div class="col-lg-4 col-md-4 col-12 dream_img align-self-center">
+                            <img src="{{ i.image1.url }}" class="main_img" alt="{{ i.title }} Story" />
+                        </div>
+                        <div class="col-lg-7 col-md-7 dream_content col-12 align-self-center">
+                            <div class="mt-20">
+                                <h5 class="color-white h5 montextralight pt-1">{{ i.title }}</h5>
+                            </div>
+                            <div class="fs-16 quotescontent">
+                                <p>{{ i.excert }}</p>
+                            </div>
+                            <div class="mt-10">
+                                <p class="montregular color-white">
+                                    <a href="impact-stories/{{ i.url }}" target="_self">Read more...</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1"></div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- End looping through stories -->
+
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#impactCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#impactCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
-  </section>
+</section>
+
 
   <!-- THE SENA FOUNDATION about -->
   <section class="pt-xs-20 pb-xs-20 pt-sm-20 pb-sm-20">
@@ -490,6 +471,8 @@
       </div>
       <div class="section no-padding">
         <ul class="ministriesGrid ministriesGrid-useDescriptions">
+          
+          
           <li class="ministriesGrid-item js-showOnHoverParent">
             <a href="https://www.salvationarmyusa.org/usn/brighten-the-holidays/" class="ministriesGrid-link">
               <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="https://s3.amazonaws.com/usn-cache.salvationarmy.org/494a13aa-b719-41ec-836f-e8c7e9dacc29_grid_holidays.jpg" class="ministriesGrid-image lazyloaded" sizes="(max-width: 768px)" alt="Holiday Giving" srcset="https://s3.amazonaws.com/usn-cache.salvationarmy.org/494a13aa-b719-41ec-836f-e8c7e9dacc29_grid_holidays.jpg" />

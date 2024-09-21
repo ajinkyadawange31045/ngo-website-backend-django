@@ -20,7 +20,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import  authenticate,login,logout
 # import time
-from initiatives.models import Initiative  #
+from initiatives.models import Initiative
+from impact_stories.models import Stories,DriveImage
+  #
 
 
 def home(request):
@@ -29,8 +31,9 @@ def home(request):
     # initiatives = Initiative.objects.all() [:10]
     # initiatives = Initiative.objects.filter(status='published')
     initiatives = Initiative.objects.filter(status='published')
+    stories = Stories.objects.filter(status='published')
     # data
-    data = {'updates':updates,'initiatives':initiatives,}
+    data = {'updates':updates,'initiatives':initiatives,'stories':stories,}
     return render(request, "blog/index.html",data)
 
 def what_we_do1(request):

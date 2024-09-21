@@ -1,0 +1,36 @@
+{% extends 'base/base_other_pages.html' %}
+
+{% block content %} 
+<h2>{{ stories.title }}</h2>
+
+
+<!-- Embed YouTube video if available -->
+{% if stories.youtube_embed_link %}
+    <h3>Watch Video</h3>
+    <iframe width="560" height="315" src="{{ stories.youtube_embed_link }}" frameborder="0" allowfullscreen></iframe>
+{% else %}
+    <!-- Show the image if no video exists -->
+    <div class="image-container">
+        <img src="{{ stories.image1.url }}" alt="{{ stories.title }} Image" class="img-fluid" />
+    </div>
+{% endif %}
+
+<p>{{ stories.content | safe }}</p>
+
+
+<!-- Check if there are any related DriveImages -->
+{% if stories.drive_images.all %}
+    <h3>Images</h3>
+    <ul>
+        {% for image in stories.drive_images.all %}
+            <li>
+                <h4>{{ image.title }}</h4>
+                <iframe src="{{ image.embed_link }}" width="600" height="400" frameborder="0" allowfullscreen></iframe>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No images available for this stories.</p>
+{% endif %} 
+
+{% endblock %}
