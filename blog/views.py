@@ -20,13 +20,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import  authenticate,login,logout
 # import time
+from initiatives.models import Initiative  #
 
 
 def home(request):
     # last 4 updates
     updates = Post.objects.all().order_by('-publish')[:4]
+    # initiatives = Initiative.objects.all() [:10]
+    # initiatives = Initiative.objects.filter(status='published')
+    initiatives = Initiative.objects.filter(status='published')
     # data
-    data = {'updates':updates,}
+    data = {'updates':updates,'initiatives':initiatives,}
     return render(request, "blog/index.html",data)
 
 def what_we_do1(request):

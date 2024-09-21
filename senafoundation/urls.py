@@ -20,9 +20,5 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
-    # path('gallery/',home, name="home"),
-    # path('<int:image_id>',details, name="details"),
-    # path('image_like/<int:id>',addlike, name="image_like"),
-    # path('gallery_image/upload',views.image_upload, name="image-upload")
-    # path('gallery_image/upload', user_passes_test(views.is_admin)(views.image_upload), name="image-upload"),
+    path('', include('initiatives.urls')), 
 ]

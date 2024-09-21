@@ -950,3 +950,17 @@ input:focus {
 .form-text {
     font-size: 12px; /* Uniform font size for additional information */
 }
+
+
+
+/******
+modal responsive
+*****/
+    /* Add this to your CSS file */
+/* Center modal for larger screens */
+@media (min-width: 768px) {
+    .modal-lg-custom {
+        max-width: 800px; /* Custom width */
+        margin: auto; /* Center the modal horizontally */
+    }
+}

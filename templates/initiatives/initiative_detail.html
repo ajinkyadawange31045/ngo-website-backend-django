@@ -1,0 +1,22 @@
+{% extends 'base/base_other_pages.html' %}
+
+{% block content %} 
+<h2>{{ initiative.title }}</h2>
+<p>{{ initiative.content | safe }}</p>
+
+<!-- Check if there are any related DriveImages -->
+{% if initiative.drive_images.all %}
+    <h3>Images</h3>
+    <ul>
+        {% for image in initiative.drive_images.all %}
+            <li>
+                <h4>{{ image.title }}</h4>
+                <iframe src="{{ image.embed_link }}" width="600" height="400" frameborder="0" allowfullscreen></iframe>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No images available for this initiative.</p>
+{% endif %} 
+
+{% endblock %}
