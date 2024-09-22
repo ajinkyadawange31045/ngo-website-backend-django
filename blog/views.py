@@ -79,7 +79,7 @@ def post(request, url):
 
 
 
-def category_page(request):
+# def category_page(request):
     # Get all categories
     categories = Category.objects.all()
     
@@ -93,35 +93,95 @@ def category_page(request):
         'category_posts': category_posts,
     }
     return render(request, 'blog/category.html', context)
+def category_page(request):
+    categories = Category.objects.all()
+    context = {
+        'categories': categories,
+    }
+    return render(request, 'blog/all_categories.html', context)
 
 
     
+# def category(request, url):
+#     all_categories = Category.objects.all()
+#     first_4_categories = Category.objects.all()[0:4]
+#     remaining_categoreis = Category.objects.all()[::-1]
+#     cats = Category.objects.all()
+    
+#     cat = Category.objects.get(url=url)
+#     posts_ard = Post.objects.filter(category=cat)
+#     posts = posts_ard[3::]
+#     try:
+#         p1 = posts_ard[0:3]
+#         # print('p1',p1)
+#     except:
+#         p1 = None
+
+#     # comments = post.comments.filter(status=True)
+#     # allcomments = post.comments.filter(status=True)
+#     page = request.GET.get('page', 1)
+#     paginator = Paginator(posts, 10)
+#     try:
+#         posts = paginator.page(page)
+#     except PageNotAnInteger:
+#         posts = paginator.page(1)
+#     except EmptyPage:
+#         posts = paginator.page(paginator.num_pages)
+
+#     data =  {'cat': cat,'cat_4': first_4_categories,'cat_r':remaining_categoreis, 'posts': posts,'p1':p1,'cats':cats}
+#     return render(request, "blog/category.html",data)
+
+# # def category(request, url):
+#     all_categories = Category.objects.all()
+#     first_4_categories = Category.objects.all()[0:4]
+#     remaining_categoreis = Category.objects.all()[::-1]
+#     cats = Category.objects.all()
+#     future = Past_events.objects.all()
+    
+
+
+#     cat = Category.objects.get(url=url)
+#     posts_ard = Post.objects.filter(category=cat)
+#     posts = posts_ard[3::]
+#     try:
+#         p1 = posts_ard[0:3]
+#         # print('p1',p1)
+#     except:
+#         p1 = None
+
+#     # comments = post.comments.filter(status=True)
+#     # allcomments = post.comments.filter(status=True)
+#     page = request.GET.get('page', 1)
+#     paginator = Paginator(posts, 10)
+#     try:
+#         posts = paginator.page(page)
+#     except PageNotAnInteger:
+#         posts = paginator.page(1)
+#     except EmptyPage:
+#         posts = paginator.page(paginator.num_pages)
+
+#     data =  {'cat': cat,'cat_4': first_4_categories,'cat_r':remaining_categoreis, 'posts': posts,'p1':p1,'cats':cats,'future':future,}
+
+#     # merging both dictionaries
+#     data_final = {**x_one,**data}
+#     return render(request, "blog/category.html",data_final)
+
 def category(request, url):
-    all_categories = Category.objects.all()
-    first_4_categories = Category.objects.all()[0:4]
-    remaining_categoreis = Category.objects.all()[::-1]
-    cats = Category.objects.all()
-    
-    cat = Category.objects.get(url=url)
-    posts_ard = Post.objects.filter(category=cat)
-    posts = posts_ard[3::]
-    try:
-        p1 = posts_ard[0:3]
-        # print('p1',p1)
-    except:
-        p1 = None
+    cat = get_object_or_404(Category, url=url)  # Fetch category by URL
+    posts = Post.objects.filter(category=cat)  # Get all posts for that category
 
-    # comments = post.comments.filter(status=True)
-    # allcomments = post.comments.filter(status=True)
-    page = request.GET.get('page', 1)
-    paginator = Paginator(posts, 10)
+    # Paginate posts (optional)
+    paginator = Paginator(posts, 10)  # Show 10 posts per page
+    page = request.GET.get('page')
     try:
-        posts = paginator.page(page)
+        paginated_posts = paginator.page(page)
     except PageNotAnInteger:
-        posts = paginator.page(1)
+        paginated_posts = paginator.page(1)
     except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
+        paginated_posts = paginator.page(paginator.num_pages)
 
-    data =  {'cat': cat,'cat_4': first_4_categories,'cat_r':remaining_categoreis, 'posts': posts,'p1':p1,'cats':cats}
-    return render(request, "blog/category.html",data)
-
+    context = {
+        'cat': cat,
+        'posts': paginated_posts,  # Pass paginated posts to template
+    }
+    return render(request, "blog/category_detail.html", context)

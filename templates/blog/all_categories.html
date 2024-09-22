@@ -1,0 +1,36 @@
+{% extends "base/base_other_pages.html" %}
+
+{% block content %}
+<div class="page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> /
+        <span class="text-decoration-none">Categories</span>
+    </div>
+</div>
+<div class="container">
+    <h1 class="text-center my-4">All Posts by Categories</h1>
+    
+    {% for category in categories %}
+    <div class="category-section">
+        <a href="{% url 'category_detail' category.url %}">{{ category.title }}</a>
+        <div class="row">
+            {% for post in category.posts.all %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><a href="/category/blog/{{ post.url }}">{{ post.title }}</a></h5>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ post.excerpt }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No posts available in this category.</p>
+            {% endfor %}
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

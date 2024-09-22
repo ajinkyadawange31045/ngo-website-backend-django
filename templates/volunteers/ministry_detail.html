@@ -4,8 +4,14 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-
 {% block content %} 
+<div class="page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> /
+        <span class="text-decoration-none">{{ ministry.title }}</span>
+    </div>  
+</div>
+
 {% if messages %}
     <div class="position-fixed top-0 start-0 mx-3" style="z-index: 1050;">
         {% for message in messages %}
@@ -18,14 +24,11 @@
 {% endif %}
 
 <div class="container my-5">
-    <h2 class="text-center">{{ ministry.title }}</h2>
-    <img src="{{ ministry.image.url }}" alt="{{ ministry.title }}" class="img-fluid rounded my-3">
-    <p class="lead">{{ ministry.instructions | safe }}</p>
+    <h2 class="text-center mb-4">{{ ministry.title }}</h2>
+    <img src="{{ ministry.image.url }}" alt="{{ ministry.title }}" class="img-fluid rounded mb-4">
+    <p class="lead text-center">{{ ministry.instructions | safe }}</p>
 
-    
-
-    <h3 class="mt-4">Apply as a Volunteer</h3>
-   
+    <h3 class="mt-5">Apply as a Volunteer</h3>
 
     <form method="post" class="needs-validation" novalidate>
         {% csrf_token %}
@@ -93,17 +96,12 @@
 <script>
     // Auto-dismiss success message after 3 seconds
     setTimeout(() => {
-        const successMessage = document.getElementById('success-message');
+        const successMessage = document.querySelector('.alert-success');
         if (successMessage) {
             successMessage.classList.remove('show');
         }
     }, 3000);
 
-
-    
-</script>
-
-<script>
     window.onload = function() {
         // Clear all form fields
         var form = document.querySelector('form');
@@ -112,6 +110,5 @@
         }
     }
 </script>
-
 
 {% endblock %}

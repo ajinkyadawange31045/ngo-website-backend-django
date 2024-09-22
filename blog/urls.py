@@ -7,9 +7,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home),
-    path('blog/<slug:url>', post),
-    path('category/', category_page, name='category_page'),  # New URL for category page
-    # url for what we do pages
+    # path('blog/<slug:url>', post),
+    # path('category/', category_page, name='category_page'),  # New URL for category page
+    # # url for what we do pages
+    # path('category/<slug:url>',category),
+
+    path('category/blog/<slug:url>', post, name='post'),  # Post detail page
+    path('category/', category_page, name='category_page'),  # All categories page
+    path('category/<slug:url>', category, name='category_detail'),  # Category detail page
     path('donate-to-educational-enpowerment-program/',what_we_do1),
     path('donate-to-moral-and-ethical-development/',what_we_do2),
     path('donate-to-mental-health-and-wellbeing-program/',what_we_do3),

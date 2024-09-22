@@ -1,22 +1,90 @@
 {% extends 'base/base_other_pages.html' %}
 
 {% block content %} 
-<h2>{{ initiative.title }}</h2>
-<p>{{ initiative.content | safe }}</p>
+<style>
+    .square-card {
+        position: relative;
+        overflow: hidden; /* Ensures the content does not overflow the card */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+        height: 0; /* Start with zero height */
+        padding-top: 100%; /* Create a square aspect ratio */
+    }
+    
+    .square-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Ensure the image covers the card */
+        border: none; /* Remove default border */
+        object-fit: cover; /* Ensure the image covers the area without distortion */
+        transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+    }
 
-<!-- Check if there are any related DriveImages -->
-{% if initiative.drive_images.all %}
-    <h3>Images</h3>
-    <ul>
-        {% for image in initiative.drive_images.all %}
-            <li>
-                <h4>{{ image.title }}</h4>
-                <iframe src="{{ image.embed_link }}" width="600" height="400" frameborder="0" allowfullscreen></iframe>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No images available for this initiative.</p>
-{% endif %} 
+    .caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the caption */
+        color: white; /* Caption color */
+        font-size: 1.2rem; /* Font size for the caption */
+        text-align: center;
+        opacity: 0; /* Start with caption hidden */
+        transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .square-card:hover .caption {
+        opacity: 1; /* Show caption on hover */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0); /* Transparent overlay */
+        z-index: 1; /* Make sure it covers the iframe */
+    }
+
+    /* Ensure responsive design for images */
+    @media (min-width: 768px) {
+        .square-card {
+            height: auto; /* Allow the height to adjust automatically */
+        }
+    }
+</style>
+
+<div class="page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> 
+        / <a href="/initiatives" class="text-decoration-none">Initiatives</a> / <span class="text-muted">{{ initiative.title }}</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">{{ initiative.title }}</h2>
+    <p class="lead text-muted">{{ initiative.content | safe }}</p>
+
+    <!-- Check if there are any related DriveImages -->
+    {% if initiative.drive_images.all %}
+        <h3 class="mt-5">Related Images</h3>
+        <div class="row">
+            {% for image in initiative.drive_images.all %}
+            <div class="col-lg-4 col-md-6 my-4">  <!-- Show 3 images in large screens, 2 in medium screens -->
+                <div class="square-card h-100 border-0">  <!-- Square card for each image -->
+                    <iframe src="{{ image.embed_link }}" class="img-fluid square-image" frameborder="0" allowfullscreen></iframe>
+                    <div class="caption">{{ image.title }}</div>  <!-- Caption overlay -->
+                    <div class="overlay"></div> <!-- Transparent overlay to prevent interactions -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            No images available for this initiative.
+        </div>
+    {% endif %} 
+</div>
 
 {% endblock %}

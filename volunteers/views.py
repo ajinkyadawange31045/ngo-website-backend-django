@@ -24,3 +24,5 @@ def ministry_detail(request, url):
         'ministry': ministry,
         'form': form,
     })
+
+

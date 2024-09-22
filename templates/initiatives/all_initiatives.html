@@ -1,0 +1,39 @@
+{% extends "base/base_other_pages.html" %}
+
+{% block content %}
+<style>
+    .card:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+</style>
+<div class="page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> /
+        <span class="text-decoration-none">Initiatives</span>
+    </div>
+</div>
+<div class="container mt-4">
+    <h1 class="text-center my-4">All Posts by Categories</h1>
+    
+    <div class="row">
+        {% for i in i1 %}
+        <div class="col-md-4 mb-4">  <!-- Responsive column -->
+            <div class="card h-100 shadow-sm">  <!-- Card for each initiative -->
+                <img src="{{ i.image1.url }}" class="card-img-top" alt="{{ i.title | truncatechars:10 }} image">
+                <div class="card-body">
+                    <h5 class="card-title text-primary"><a href="/initiatives/{{ i.url }}" class="text-decoration-none">{{ i.title }}</a></h5>
+                    <p class="card-text text-muted">Date of Initiative: {{ i.date_of_initiative }}</p>
+                    <p class="card-text">{{ i.excert | truncatechars:100 | safe }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning text-center" role="alert">
+            No initiatives available.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

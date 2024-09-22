@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 
 {% block content %}
 <div class="container">
@@ -11,19 +11,19 @@
                     <h5>{{ category.title }}</h5>
                 </div>
                 <div class="card-body">
-                    <p>{{ category.description }}</p>
+                    <p>{{ category.description |safe }}</p>
                     <ul class="list-unstyled">
                         {% for post in category_posts|default_if_none:0 %}
                         {% if post %}
                         <li>
-                            <a href="/blog/{{ post.url }}">{{ post.title }}</a>
+                            <a href="/category/blog/{{ post.url }}">{{ post.title }}</a>
                         </li>
                         {% endif %}
                         {% endfor %}
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>  
         {% endfor %}
     </div>
 </div>

@@ -53,7 +53,7 @@ class Post(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=40)
     blog_views =models.IntegerField(default=0,editable=False)
     main_long_title = models.CharField(max_length=250)
