@@ -22,6 +22,7 @@ from django.contrib.auth import  authenticate,login,logout
 # import time
 from initiatives.models import Initiative
 from impact_stories.models import Stories,DriveImage
+from volunteers.models import Ministry
   #
 
 
@@ -32,8 +33,9 @@ def home(request):
     # initiatives = Initiative.objects.filter(status='published')
     initiatives = Initiative.objects.filter(status='published')
     stories = Stories.objects.filter(status='published')
+    ministry = Ministry.objects.all()
     # data
-    data = {'updates':updates,'initiatives':initiatives,'stories':stories,}
+    data = {'updates':updates,'initiatives':initiatives,'stories':stories,'ministry':ministry,}
     return render(request, "blog/index.html",data)
 
 def what_we_do1(request):

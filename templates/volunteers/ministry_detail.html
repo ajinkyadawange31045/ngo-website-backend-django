@@ -1,0 +1,117 @@
+{% extends 'base/base_other_pages.html' %}
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+
+{% block content %} 
+{% if messages %}
+    <div class="position-fixed top-0 start-0 mx-3" style="z-index: 1050;">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container my-5">
+    <h2 class="text-center">{{ ministry.title }}</h2>
+    <img src="{{ ministry.image.url }}" alt="{{ ministry.title }}" class="img-fluid rounded my-3">
+    <p class="lead">{{ ministry.instructions | safe }}</p>
+
+    
+
+    <h3 class="mt-4">Apply as a Volunteer</h3>
+   
+
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="id_name" class="form-label">Name</label>
+            {{ form.name }}
+            <div class="invalid-feedback">
+                {% for error in form.name.errors %}
+                    {{ error }}<br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_email" class="form-label">Email</label>
+            {{ form.email }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                    {{ error }}<br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_role" class="form-label">Role</label>
+            {{ form.role }}
+            <div class="invalid-feedback">
+                {% for error in form.role.errors %}
+                    {{ error }}<br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_message" class="form-label">Message</label>
+            {{ form.message }}
+            <div class="invalid-feedback">
+                {% for error in form.message.errors %}
+                    {{ error }}<br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% if form.errors %}
+        <div class="alert alert-danger mt-4">
+            <p>Please correct the following errors:</p>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // Auto-dismiss success message after 3 seconds
+    setTimeout(() => {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            successMessage.classList.remove('show');
+        }
+    }, 3000);
+
+
+    
+</script>
+
+<script>
+    window.onload = function() {
+        // Clear all form fields
+        var form = document.querySelector('form');
+        if (form) {
+            form.reset();
+        }
+    }
+</script>
+
+
+{% endblock %}

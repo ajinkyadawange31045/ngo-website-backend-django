@@ -472,19 +472,20 @@
       <div class="section no-padding">
         <ul class="ministriesGrid ministriesGrid-useDescriptions">
           
-          
+          {%for i in ministry%}
           <li class="ministriesGrid-item js-showOnHoverParent">
-            <a href="https://www.salvationarmyusa.org/usn/brighten-the-holidays/" class="ministriesGrid-link">
-              <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="https://s3.amazonaws.com/usn-cache.salvationarmy.org/494a13aa-b719-41ec-836f-e8c7e9dacc29_grid_holidays.jpg" class="ministriesGrid-image lazyloaded" sizes="(max-width: 768px)" alt="Holiday Giving" srcset="https://s3.amazonaws.com/usn-cache.salvationarmy.org/494a13aa-b719-41ec-836f-e8c7e9dacc29_grid_holidays.jpg" />
-              <p class="ministriesGrid-title">Holiday Giving</p>
-              <div class="ministriesGrid-overlay u-showOnHover js-showOnHover">
-                <div class="ministriesGrid-content">
-                  <p class="ministriesGrid-caption">Each year, millions of children don't have any Christmas gifts to unwrap because there's no money in the budget.</p>
-                  <span class="btn btn-inverse btn-black ministriesGrid-btn">Holiday Giving</span>
+            <a href="ministry/{{i.url}}" class="ministriesGrid-link">
+                <img src="{{ i.image.url }}" class="ministriesGrid-image lazyloaded" alt="{{ i.title }}" />
+                <p class="ministriesGrid-title">{{ i.title }}</p>
+                <div class="ministriesGrid-overlay u-showOnHover js-showOnHover">
+                    <div class="ministriesGrid-content">
+                        <p class="ministriesGrid-caption">{{ i.caption }}</p>
+                        <span class="btn btn-inverse btn-black ministriesGrid-btn">More Info</span>
+                    </div>
                 </div>
-              </div>
             </a>
-          </li>
+        </li>
+        {%endfor%}        
 
           <li class="ministriesGrid-item js-showOnHoverParent">
             <a href="https://www.salvationarmyusa.org/usn/rent-mortgage-and-utility-assistance/" class="ministriesGrid-link">
