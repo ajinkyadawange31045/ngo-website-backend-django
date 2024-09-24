@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'initiatives',
     'impact_stories',
     'volunteers',
+    'non_blog',
 ]
 
 MIDDLEWARE = [
