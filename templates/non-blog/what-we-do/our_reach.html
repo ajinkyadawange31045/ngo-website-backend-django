@@ -1,14 +1,67 @@
 {% extends "base/base_other_pages.html" %}
 
 {% block content %}
-
-
-</style>
-<div class="page-bar">
-    <div class="px-3">
+<div class="page-bar bg-light p-3">
+    <div class="mx-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">Our Reach</span>
     </div>
 </div>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Our Reach in Karnataka</h2>
+
+    <p class="text-center mb-4">At SenaFoundation, we are dedicated to empowering individuals across Karnataka through various educational initiatives and programs. Here’s how we’re making a difference in key locations:</p>
+
+    <div class="mb-5">
+        <h5>Bangalore:</h5>
+        <p>In Bangalore, we conduct workshops and training sessions aimed at enhancing skills for both students and professionals. Our programs focus on career development, digital literacy, and personal growth.</p>
+
+        <h5>Kalaburagi:</h5>
+        <p>Our initiatives in Kalaburagi include providing free educational resources to underprivileged children. We also organize community engagement activities to raise awareness about the importance of education.</p>
+
+        <h5>Surathkal:</h5>
+        <p>In Surathkal, we partner with local schools to enhance their educational programs and introduce innovative teaching methodologies. We believe in nurturing the potential of every child.</p>
+
+        <h5>Manipal:</h5>
+        <p>Manipal serves as a hub for our leadership training programs, where we train youth to become effective leaders in their communities. Our initiatives aim to empower them with the skills they need to drive positive change.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div id="map" style="height: 500px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Google Maps JavaScript API -->
+<script>
+    function initMap() {
+        var karnataka = { lat: 15.3173, lng: 75.7139 }; // Center of Karnataka
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 6,
+            center: karnataka
+        });
+
+        // Markers for the specified locations
+        var locations = [
+            { lat: 12.9716, lng: 77.5946, title: 'Bangalore' },
+            { lat: 17.3275, lng: 76.8394, title: 'Kalaburagi' },
+            { lat: 12.9013, lng: 74.8921, title: 'Surathkal' },
+            { lat: 13.3400, lng: 74.7880, title: 'Manipal' }
+        ];
+
+        locations.forEach(function(location) {
+            var marker = new google.maps.Marker({
+                position: { lat: location.lat, lng: location.lng },
+                map: map,
+                title: location.title
+            });
+        });
+    }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
 
 {% endblock %}

@@ -93,8 +93,9 @@
                             </div>
                             <div class="mt-10">
                                 <p class="montregular color-white">
-                                    <a href="impact-stories/{{ i.url }}" target="_self">Read more...</a>
+                                    <a class="btn text-primary" href="impact-stories/{{ i.url }}" target="_self">Read more</a>
                                 </p>
+                                
                             </div>
                         </div>
                         <div class="col-lg-1 col-md-1"></div>
@@ -120,29 +121,32 @@
 
 
   <!-- THE SENA FOUNDATION about -->
-  <section class="pt-xs-20 pb-xs-20 pt-sm-20 pb-sm-20">
+  <section class="pt-xs-20 pb-xs-20 pt-sm-20 pb-sm-20 px-2">
     <div class="container py-3">
       <div class="row py-2">
-        <div class="col-lg-5 col-md-5 d-none d-sm-block align-self-center">
-          <img src="../images/12.png" alt="Images_about" style="width: 100%; height: auto;" />
+        <div class="col-lg-5 align-self-center">
+          <img src="{% static 'images/sena.jpeg' %}" alt="Images_about" style="width: 100%; height: auto;" />
         </div>
-        <div class="col-lg-7 col-md-7 d-lg-block d-md-block align-self-start">
-          <h2 class="montregular heading_section color-white">THE SENA FOUNDATION</h2>
+        <div class="col-lg-7 d-lg-block d-md-block align-self-start">
+          <h2 class="montregular my-3 heading_section color-white">THE SENA FOUNDATION</h2>
           <h5 class="montregular">(SIKSHA EVAM NAITIK AADHAR)</h5>
 
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi provident nihil sapiente excepturi, qui laborum nam sunt quo autem eveniet? Fugiat obcaecati, maiores excepturi accusamus, eveniet placeat cumque reprehenderit assumenda eligendi laborum officiis quaerat illo, repellendus dolores amet facere deserunt aperiam? Iure, dolores aspernatur enim reiciendis quisquam minima perspiciatis consectetur dolorum sapiente necessitatibus, tempore soluta, consequatur facilis at! Consectetur, totam. Dignissimos id officia veniam tenetur eos, sed quo. Libero, ratione.</p>
+          <p>
+            SENA - Shiksha Evam Naitik Aadhar is a Bengaluru-based NGO dedicated to uplifting society through educational empowerment, moral and ethical development, and community engagement. We believe in fostering positive change by providing resources, support, and opportunities for individuals to grow holistically, from education to environmental awareness.
 
-          <div class="row mx-2 mb-20 vision-content">
-            <div class="col-lg-6 offset1 col-md-6 col-sm-12 vision-item">
+            Established with a focus on creating an inclusive society, SENA works at the grassroots level, focusing on Karnataka as our area of operation. Our efforts are aimed at marginalized communities, underprivileged groups, and especially children, women, and youth. We believe in not just providing education but ensuring that it is coupled with strong ethical values and leadership skills, enabling our beneficiaries to contribute positively to society.</p>
+
+          <div class="row px-2 mb-20 vision-content">
+            <div class="col-lg-6 offset1 col-md-12 col-sm-12 vision-item">
               <h4 class="m-md-2 m-sm-2">Our Vision</h4>
 
-              <p class="desc m-md-2 m-sm-2">No child in India shall be deprived of education because of hunger</p>
+              <p class="desc m-md-2 m-sm-2">A society where education, ethical values, and leadership flourish, creating empowered individuals and resilient communities</p>
             </div>
 
-            <div class="col-lg-6 offset1 col-md-6 col-sm-12 vision-item">
+            <div class="col-lg-6 offset1 col-md-12 col-sm-12 vision-item">
               <h4 class="m-md-2 m-sm-2">Our Mission</h4>
 
-              <p class="desc m-md-2 m-sm-2">To feed 3 million children everyday by 2025</p>
+              <p class="desc m-md-2 m-sm-2">Empowering individuals through education and ethical development to build a better, sustainable society.</p>
             </div>
           </div>
           <div class="col-6 p-0">
@@ -151,35 +155,7 @@
         </div>
       </div>
 
-      <div class="row align-self-center justify-content-around mt-5 digit_static">
-        <div class="col-3 justify-content-center align-items-center static_item">
-          <img src="../images/1.jpeg" class="static_image" alt="" />
-          <div class="content_wrap">
-            <h6 class="text-dark p-1" style="font-weight: bold;">Over 4 billion meals served</h6>
-          </div>
-        </div>
-
-        <div class="col-3 justify-content-center align-items-center static_item">
-          <img src="../images/4.jpeg" class="static_image" alt="" />
-          <div class="content_wrap">
-            <h6 class="text-dark p-1" style="font-weight: bold;">Over 2.2 million+ children benefitted</h6>
-          </div>
-        </div>
-
-        <div class="col-3 justify-content-center align-items-center static_item">
-          <img src="../images/3.jpg" class="static_image" alt="" />
-          <div class="content_wrap">
-            <h6 class="text-dark p-1" style="font-weight: bold;">Reached to over 23,000 schools</h6>
-          </div>
-        </div>
-
-        <div class="col-3 justify-content-center align-items-center static_item">
-          <img src="../images/1.jpeg" class="static_image" alt="" />
-          <div class="content_wrap">
-            <h6 class="text-dark p-1" style="font-weight: bold;">16 States and 2 Union Territories</h6>
-          </div>
-        </div>
-      </div>
+     
     </div>
   </section>
 
@@ -384,7 +360,7 @@
             <p>No initiatives available.</p>
           {% endfor %}
         </ul>
-        <div class="col-12 mt-4 read-more" style="text-align: center;">
+        <div class="col-12 mt-4 read-more" style="text-align: start;">
           <a class="px-2 text-decoration-none font-monospace just" href="/initiatives">All Initiatives</a>
         </div>
         <!-- Section: Timeline -->
@@ -464,12 +440,12 @@
   </div>
 
 
-  <!-- Learn how you can help -->
+  <!-- volunteering opportunities -->
   <section style="background-color: #F4BC21;">
     <div class="py-3 m-lg-5 m-md-3 m-sm-1">
       <div class="row">
         <div class="col-12 text-center mb-30 mt-3 py-3">
-          <h2 class="montregular heading_section color-white">Learn how you can help</h2>
+          <h2 class="montregular heading_section color-white">Volunteering Opportunities</h2>
         </div>
       </div>
       <div class="section no-padding">
@@ -497,7 +473,7 @@
 
 
     <!-- Latest Updates -->
-    <div class="container pt-3">
+    <div class="container py-1">
         <div class="container text-center py-2 my-1">
           <h1>Latest Updates</h1>
         </div>
@@ -516,7 +492,7 @@
             </div>
           {% endfor %}
         </div>
-        <div class="col-12 mt-4 read-more" style="text-align: center;">
+        <div class="col-12 my-4 read-more" style="text-align: center;">
           <a class="px-2 text-decoration-none font-monospace just" href="/category">View all</a>
         </div>
       </div>

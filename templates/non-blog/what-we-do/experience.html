@@ -1,13 +1,136 @@
 {% extends "base/base_other_pages.html" %}
 
 {% block content %}
-
-
-</style>
-<div class="page-bar">
-    <div class="px-3">
+<div class="page-bar bg-light p-3">
+    <div class="mx-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">Experiences</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Experiences that Inspire</h2>
+
+    <h3 class="mt-5 text-center">Volunteer Experiences</h3>
+    <p class="text-center mb-4">Hear from our dedicated volunteers who have made a difference:</p>
+
+    <!-- Carousel for Volunteer Experiences -->
+    <div id="volunteerTestimonials" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Anita Sharma</h5>
+                                <p class="card-text">"Thanks to the educational programs provided by SenaFoundation, I have gained confidence and skills that have helped me pursue my dreams. I am now a college student, striving for a better future!"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rahul Kumar</h5>
+                                <p class="card-text">"The support I received from SenaFoundation was life-changing. I was able to participate in workshops that opened new doors for me. I am now working and supporting my family."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Anita Sharma</h5>
+                                <p class="card-text">"Thanks to the educational programs provided by SenaFoundation, I have gained confidence and skills that have helped me pursue my dreams. I am now a college student, striving for a better future!"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rahul Kumar</h5>
+                                <p class="card-text">"The support I received from SenaFoundation was life-changing. I was able to participate in workshops that opened new doors for me. I am now working and supporting my family."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#volunteerTestimonials" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#volunteerTestimonials" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h3 class="mt-5 text-center">Beneficiary Experiences</h3>
+    <p class="text-center mb-4">Stories from those whose lives have been positively impacted:</p>
+
+    <!-- Carousel for Beneficiary Experiences -->
+    <div id="beneficiaryTestimonials" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Anita Sharma</h5>
+                                <p class="card-text">"Thanks to the educational programs provided by SenaFoundation, I have gained confidence and skills that have helped me pursue my dreams. I am now a college student, striving for a better future!"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rahul Kumar</h5>
+                                <p class="card-text">"The support I received from SenaFoundation was life-changing. I was able to participate in workshops that opened new doors for me. I am now working and supporting my family."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Anita Sharma</h5>
+                                <p class="card-text">"Thanks to the educational programs provided by SenaFoundation, I have gained confidence and skills that have helped me pursue my dreams. I am now a college student, striving for a better future!"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rahul Kumar</h5>
+                                <p class="card-text">"The support I received from SenaFoundation was life-changing. I was able to participate in workshops that opened new doors for me. I am now working and supporting my family."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#beneficiaryTestimonials" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#beneficiaryTestimonials" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h3 class="mt-5 text-center">Get Involved</h3>
+    <p class="text-center mb-4">Join us in making a difference. Whether as a volunteer or a supporter, your contribution can change lives.</p>
+    <div class="text-center mt-4">
+        <a href="/volunteer" class="btn btn-primary mx-2">Become a Volunteer</a>
+        <a href="/donate" class="btn btn-secondary mx-2">Support Our Cause</a>
+        <a href="/initiatives" class="btn btn-info mx-2">View Our Initiatives</a>
     </div>
 </div>
 

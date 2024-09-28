@@ -38,6 +38,9 @@ def our_reach(request):
 def school_covered(request):
     return render(request,'non-blog/what-we-do/schools_covered.html')
 
+def research(request):
+    return render(request,'non-blog/what-we-do/research.html')
+
 
 
 # sample

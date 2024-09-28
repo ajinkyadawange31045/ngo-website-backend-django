@@ -93,12 +93,20 @@ def post(request, url):
         'category_posts': category_posts,
     }
     return render(request, 'blog/category.html', context)
+
+
 def category_page(request):
     categories = Category.objects.all()
+    
+    # Fetch the latest 6 posts for each category
+    for category in categories:
+        category.latest_posts = category.posts.all()[:3]  # Get the latest 6 posts
+
     context = {
         'categories': categories,
     }
     return render(request, 'blog/all_categories.html', context)
+
 
 
     
@@ -180,8 +188,13 @@ def category(request, url):
     except EmptyPage:
         paginated_posts = paginator.page(paginator.num_pages)
 
+    # Fetch all categories for navigation
+    categories = Category.objects.all()
+
     context = {
         'cat': cat,
         'posts': paginated_posts,  # Pass paginated posts to template
+        'categories': categories,    # Pass all categories to template
     }
     return render(request, "blog/category_detail.html", context)
+

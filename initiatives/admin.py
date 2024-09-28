@@ -8,10 +8,10 @@ class DriveImageInline(admin.TabularInline):
 
 # Customizing the Initiative admin interface
 class InitiativeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'title', 'date_of_initiative', 'status', 'url')
-    search_fields = ('name', 'title', 'content', 'point_wise')
+    list_display = ( 'title', 'date_of_initiative', 'status', 'url')
+    search_fields = ( 'title', 'content', 'point_wise')
     list_filter = ('date_of_initiative', 'status')
-    prepopulated_fields = {'url': ('name',)}
+    # prepopulated_fields = {'url': ()}
     
     # Allow editing these fields directly from the list view
     list_editable = ('status',)
@@ -19,7 +19,7 @@ class InitiativeAdmin(admin.ModelAdmin):
     # Fieldsets to organize fields in the admin form
     fieldsets = (
         (None, {
-            'fields': ('name', 'title', 'content', 'url', 'status', 'point_wise', 'date_of_initiative')
+            'fields': ( 'title', 'content', 'url', 'status', 'point_wise', 'date_of_initiative','youtube_video')
         }),
         ('Media', {
             'fields': ('image1', 'caption_for_image'),

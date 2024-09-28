@@ -6,8 +6,7 @@ from ckeditor.fields import RichTextField
 
 class Initiative(models.Model):
     initiative_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30)
-    title = models.CharField(max_length=45, blank=True)
+    title = models.CharField(max_length=255, blank=True)
     excert = models.CharField(max_length=200,blank=True)
     point_wise = RichTextField(blank=True)
     content = RichTextField(blank=True)
@@ -18,6 +17,7 @@ class Initiative(models.Model):
     tags_for_seo_and_search_bar_in_website = models.TextField(
         help_text='Add tags for search and SEO purposes.'
     )
+    youtube_video = models.URLField(blank=True, help_text="Add a YouTube video URL")
     
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -26,10 +26,16 @@ class Initiative(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse('initiatives:initiative_detail', args=[str(self.pk)]) 
+    
+    @property
+    def youtube_embed_link(self):
+        if self.youtube_video:
+            return self.youtube_video.replace("watch?v=", "embed/")
+        return None
 
 
 class DriveImage(models.Model):

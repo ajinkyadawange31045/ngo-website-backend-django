@@ -1,13 +1,67 @@
 {% extends "base/base_other_pages.html" %}
 
 {% block content %}
-
-
-</style>
-<div class="page-bar">
-    <div class="px-3">
+<div class="page-bar bg-light p-3">
+    <div class="mx-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">Free Education</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Empowering Through Free Education</h2>
+    <p class="text-center mb-4">At SenaFoundation, we believe that education is a fundamental right. Our Free Education initiative aims to provide quality education to underprivileged children and youth, enabling them to achieve their dreams.</p>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <img src="https://via.placeholder.com/500" alt="Free Education Program" class="img-fluid rounded" />
+        </div>
+        <div class="col-md-6">
+            <h3>Our Approach</h3>
+            <p>We focus on innovative educational programs, workshops, and mentorship that cater to the specific needs of the community. Our experienced educators work tirelessly to create a supportive and inclusive learning environment.</p>
+        </div>
+    </div>
+
+    <h3 class="mt-5 text-center">Success Stories</h3>
+    <p class="text-center mb-4">Here’s what our students have to say:</p>
+
+    <!-- Carousel -->
+    <div id="studentTestimonials" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="text-center">
+                    <h5>Sita Gupta</h5>
+                    <p>"Thanks to the Free Education program, I have learned so much and gained the confidence to pursue my dreams."</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="text-center">
+                    <h5>Rahul Singh</h5>
+                    <p>"The support and guidance I received from my mentors have been invaluable. I am now ready to take my education to the next level!"</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="text-center">
+                    <h5>Anjali Verma</h5>
+                    <p>"This program has changed my life. I am now enrolled in college, thanks to the education I received at SenaFoundation."</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#studentTestimonials" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#studentTestimonials" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h3 class="mt-5 text-center">Get Involved</h3>
+    <p class="text-center mb-4">Help us continue to provide free education to those who need it most. Your support can change lives!</p>
+    <div class="text-center mt-4">
+        <a href="/donate" class="btn btn-primary mx-2">Donate Now</a>
+        <a href="/volunteer" class="btn btn-secondary mx-2">Become a Volunteer</a>
     </div>
 </div>
 

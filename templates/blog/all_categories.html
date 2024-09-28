@@ -1,36 +1,146 @@
 {% extends "base/base_other_pages.html" %}
 
 {% block content %}
-<div class="page-bar">
+<style>
+    .category-section {
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 30px;
+    }
+    
+    .card {
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: scale(1.03);
+    }
+    
+    .card-header {
+        background-color: #007bff; /* Bootstrap primary color */
+    }
+    
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Equalizes height */
+        height: 100%; /* Ensures card expands fully */
+    }
+    
+    .page-bar a {
+        font-weight: 500;
+    }
+    
+    .page-bar span {
+        font-weight: 300;
+    }
+    
+    .card-footer {
+        background-color: #f8f9fa;
+    }
+    
+    /* Link hover color */
+    a:hover {
+        color: #007bff; /* Adjust hover color to blue */
+    }
+
+    .toggle-btn {
+        cursor: pointer;
+        font-weight: bold;
+        color: #007bff; /* Bootstrap primary color */
+        display: inline-flex; /* Use flex to align the icon and text */
+        align-items: center; /* Center vertically */
+    }
+
+    .toggle-icon {
+        transition: transform 0.3s ease; /* Smooth rotation */
+        margin-right: 5px; /* Space between icon and text */
+    }
+
+    .toggle-btn:hover {
+        text-decoration: none;
+    }
+    .toggle-icon {
+        transition: transform 0.3s ease; /* Smooth rotation */
+        margin-right: 5px; /* Space between icon and text */
+    }
+    .post-section {
+        display: none; /* Hide posts by default */
+    }
+
+    .rotate {
+        transform: rotate(90deg); /* Rotate the icon */
+    }
+    .page-bar {
+        background-color: #f8f9fa; /* Light background for the navigation bar */
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border-radius: 5px; /* Rounded corners */
+    }
+
+</style>
+
+<div class="page-bar py-2 mb-4">
     <div class="px-3">
-        <a href="/" class="text-decoration-none">Home</a> /
-        <span class="text-decoration-none">Categories</span>
+        <a href="/" class="text-decoration-none text-primary">Home</a> /
+        <span class="text-muted">Categories</span>
     </div>
 </div>
+
 <div class="container">
-    <h1 class="text-center my-4">All Posts by Categories</h1>
+    <h1 class="text-center my-5 fw-bold">All Posts by Categories</h1>
     
     {% for category in categories %}
-    <div class="category-section">
-        <a href="{% url 'category_detail' category.url %}">{{ category.title }}</a>
-        <div class="row">
-            {% for post in category.posts.all %}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5><a href="/category/blog/{{ post.url }}">{{ post.title }}</a></h5>
-                    </div>
-                    <div class="card-body">
-                        <p>{{ post.excerpt }}</p>
+    <div class="category-section my-5">
+        <h2 class="mb-4">
+            <span class="toggle-btn" onclick="togglePosts('{{ category.title }}', this)">
+                <span class="toggle-icon p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16" id="arrow-icon">
+                        <polygon points="2,0 12,8 2,16" style="fill: black;" />
+                    </svg>
+                </span> 
+                {{ category.title }}
+            </span>
+            
+        </h2>
+        
+        <div class="post-section" id="{{ category.title }}">
+            <div class="row">
+                {% for post in category.latest_posts %}
+                <div class="col-md-4 col-sm-6 d-flex">
+                    <div class="card mb-4 shadow-sm flex-fill">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <a href="/category/blog/{{ post.url }}" class="text-white text-decoration-none">{{ post.title }}</a>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ post.excerpt|truncatechars:300 }}</p>
+                        </div>
                     </div>
                 </div>
+                {% empty %}
+                <p class="text-muted">No posts available in this category.</p>
+                {% endfor %}
+                <a href="{% url 'category_detail' category.url %}" class="text-decoration-none text-primary text-center"> (View All)</a>
             </div>
-            {% empty %}
-            <p>No posts available in this category.</p>
-            {% endfor %}
-            
         </div>
     </div>
     {% endfor %}
 </div>
+
+<script>
+    function togglePosts(categoryTitle, toggleElement) {
+        const postSection = document.getElementById(categoryTitle);
+        const arrowIcon = toggleElement.querySelector('#arrow-icon');
+    
+        if (postSection.style.display === "none" || postSection.style.display === "") {
+            postSection.style.display = "block"; // Show posts
+            arrowIcon.innerHTML = '<polygon points="0,2 8,12 16,2" style="fill: #ffc107;" />'; // Change to down arrow
+        } else {
+            postSection.style.display = "none"; // Hide posts
+            arrowIcon.innerHTML = '<polygon points="2,0 12,8 2,16" style="fill: black;" />'; // Change back to right arrow
+        }
+    }
+    
+</script>
 {% endblock %}

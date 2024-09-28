@@ -1,14 +1,104 @@
 {% extends "base/base_other_pages.html" %}
-
+{% load static %}
 {% block content %}
 
-
-</style>
 <div class="page-bar">
     <div class="px-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">About</span>
     </div>
 </div>
+
+  <!-- THE SENA FOUNDATION about -->
+  <section class="pt-xs-20 pb-xs-20 pt-sm-20 pb-sm-20 px-2">
+    <div class="container py-3">
+      <div class="row py-2">
+        <div class="col-lg-5 align-self-center">
+          <img src="{% static 'images/sena.jpeg' %}" alt="Images_about" style="width: 100%; height: auto;" />
+        </div>
+        <div class="col-lg-7 d-lg-block d-md-block align-self-start">
+          <h2 class="montregular my-3 heading_section color-white">THE SENA FOUNDATION</h2>
+          <h5 class="montregular">(SIKSHA EVAM NAITIK AADHAR)</h5>
+
+          <p>
+            SENA - Shiksha Evam Naitik Aadhar is a Bengaluru-based NGO dedicated to uplifting society through educational empowerment, moral and ethical development, and community engagement. We believe in fostering positive change by providing resources, support, and opportunities for individuals to grow holistically, from education to environmental awareness.
+
+            Established with a focus on creating an inclusive society, SENA works at the grassroots level, focusing on Karnataka as our area of operation. Our efforts are aimed at marginalized communities, underprivileged groups, and especially children, women, and youth. We believe in not just providing education but ensuring that it is coupled with strong ethical values and leadership skills, enabling our beneficiaries to contribute positively to society.</p>
+
+          <div class="row px-2 mb-20 vision-content">
+            <div class="col-lg-6 offset1 col-md-12 col-sm-12 vision-item">
+              <h4 class="m-md-2 m-sm-2">Our Vision</h4>
+
+              <p class="desc m-md-2 m-sm-2">A society where education, ethical values, and leadership flourish, creating empowered individuals and resilient communities</p>
+            </div>
+
+            <div class="col-lg-6 offset1 col-md-12 col-sm-12 vision-item">
+              <h4 class="m-md-2 m-sm-2">Our Mission</h4>
+
+              <p class="desc m-md-2 m-sm-2">Empowering individuals through education and ethical development to build a better, sustainable society.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container py-2">
+        <h6 class="mt-2 bold">
+            Our programs are structured to address the following key areas:
+        </h6>
+        <p class="desc">
+           
+            <ul>
+                <li>Educational Empowerment: We provide opportunities for knowledge enhancement through workshops, seminars, and training sessions aimed at improving academic and life skills.</li>
+            <li>Moral and Ethical Development: Through our values-based initiatives, we nurture character-building in youth by promoting integrity, responsibility, and empathy.</li>
+            <li>Cultural Enrichment: India’s rich cultural heritage is central to our programs, with cultural events and educational initiatives that celebrate diversity.</li>
+            <li>Community Engagement: Working with local communities, we foster inclusion and social cohesion, creating a collective sense of purpose and belonging.</li>
+            <li>Support for the Underprivileged: We provide scholarships and financial support to ensure education reaches the most marginalized members of society.</li>
+            <li>Health and Well-being: Our mental health initiatives promote wellness and provide access to resources like counseling and workshops on mental well-being.</li>
+            <li>Environmental Awareness: We engage in sustainability initiatives that include tree planting, clean-up drives, and educational programs focused on environmental conservation.
+                Leadership and Citizenship: Our civic education and leadership programs focus on empowering youth to become active, responsible citizens.</li>
+            <li>Research and Advocacy: We conduct research to improve educational practices and advocate for social and educational policies that align with our mission.</li>
+            </ul>
+        </p>
+      </div>
+
+
+      <div class="row align-self-center justify-content-around mt-5 digit_static">
+        <div class="col-3 col-sm-6 justify-content-center align-items-center static_item">
+          <img src="{% static 'images/about_mentalhealth.jpeg' %}" class="static_image" alt="" />
+          <div class="content_wrap">
+            <h6 class="text-dark p-1" style="font-weight: bold;">50+ Workshops | 3000+ Supported</h6>
+          </div>
+        </div>
+
+        <div class="col-3 col-sm-6 justify-content-center align-items-center static_item">
+          <img src="{% static 'images/about_teaching.jpeg' %}" class="static_image" alt="" />
+          <div class="content_wrap">
+            <h6 class="text-dark p-1" style="font-weight: bold;">150+ School and College Programs
+            </h6>
+          </div>
+        </div>
+
+        <div class="col-3 col-sm-6 justify-content-center align-items-center static_item">
+          <img src="{% static 'images/about_scholarship.jpeg' %}" class="static_image" alt="" />
+          <div class="content_wrap">
+            <h6 class="text-dark p-1" style="font-weight: bold;">500+ Scholarships
+            </h6>
+          </div>
+        </div>
+
+        <div class="col-3 col-sm-6 justify-content-center align-items-center static_item">
+          <img src="{% static 'images/about_community.jpeg' %}" class="static_image" alt="" />
+          <div class="content_wrap">
+            <h6 class="text-dark p-1" style="font-weight: bold;">200+ Community Events</h6>
+          </div>
+        </div>
+      </div>
+
+
+      
+    </div>
+  </section>
+
 
 {% endblock %}

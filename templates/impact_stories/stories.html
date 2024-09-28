@@ -1,8 +1,8 @@
 {% extends 'base/base_other_pages.html' %}
 
 {% block content %} 
-<div class="page-bar">
-    <div class="px-3">
+<div class="page-bar bg-light p-3">
+    <div class="mx-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">{{ stories.title }}</span>
     </div>
@@ -13,34 +13,38 @@
 
     <!-- Embed YouTube video if available -->
     {% if stories.youtube_embed_link %}
-        <h3 class="mt-4">Watch Video</h3>
+        <h3 class="mt-4 text-center">Watch Video</h3>
         <div class="ratio ratio-16x9">
             <iframe src="{{ stories.youtube_embed_link }}" class="w-100" frameborder="0" allowfullscreen></iframe>
         </div>
     {% else %}
         <!-- Show the image if no video exists -->
         <div class="image-container text-center mt-4">
-            <img src="{{ stories.image1.url }}" alt="{{ stories.title }} Image" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+            <img src="{{ stories.image1.url }}" alt="{{ stories.title }} Image" class="img-fluid rounded shadow" style="max-width: 100%; height: auto;" />
         </div>
     {% endif %}
 
-    <p class="mt-3">{{ stories.content | safe }}</p>
+    <p class="mt-4">{{ stories.content | safe }}</p>
 
     <!-- Check if there are any related DriveImages -->
     {% if stories.drive_images.all %}
         <h3 class="mt-5">Related Images</h3>
-        <ul class="list-unstyled">
+        <div class="row">
             {% for image in stories.drive_images.all %}
-                <li class="mb-4">
-                    <h4>{{ image.title }}</h4>
-                    <div class="ratio ratio-16x9">
-                        <iframe src="{{ image.embed_link }}" class="w-100" frameborder="0" allowfullscreen></iframe>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="{{ image.embed_link }}" class="w-100" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ image.title }}</h5>
+                        </div>
                     </div>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
-        <p>No images available for this story.</p>
+        <p class="mt-4">No images available for this story.</p>
     {% endif %} 
 </div>
 

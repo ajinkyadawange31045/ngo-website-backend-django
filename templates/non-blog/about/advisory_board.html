@@ -1,14 +1,57 @@
 {% extends "base/base_other_pages.html" %}
 
 {% block content %}
-
-
-</style>
-<div class="page-bar">
-    <div class="px-3">
+<div class="page-bar bg-light p-3">
+    <div class="mx-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">Advisory Board</span>
     </div>
 </div>
 
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Meet Our Advisory Board</h2>
+    
+    <p class="text-center">Our Advisory Board comprises industry experts who guide us in achieving our mission.</p>
+
+    <div class="row">
+        <!-- Advisory Board Member 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 1">
+                <div class="card-body">
+                    <h5 class="card-title">Dr. John Smith</h5>
+                    <p class="card-text">Expert in Educational Policy and Leadership. Dr. Smith has over 20 years of experience in the field of education and has published numerous papers on educational reforms.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advisory Board Member 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 2">
+                <div class="card-body">
+                    <h5 class="card-title">Ms. Emily Johnson</h5>
+                    <p class="card-text">Specialist in Community Development. With a decade of experience, Ms. Johnson focuses on sustainable development initiatives in underprivileged communities.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advisory Board Member 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 3">
+                <div class="card-body">
+                    <h5 class="card-title">Mr. Michael Brown</h5>
+                    <p class="card-text">Financial Advisor and Philanthropist. Mr. Brown brings financial expertise to our organization, helping to ensure transparency and effective resource management.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/contact-us" class="btn btn-primary">Contact Our Advisory Board</a>
+    </div>
+</div>
+
 {% endblock %}
+

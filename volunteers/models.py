@@ -11,6 +11,12 @@ class Ministry(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def youtube_embed_link(self):
+        if self.youtube_link:
+            return self.youtube_link.replace("watch?v=", "embed/")
+        return None
 
 class VolunteerApplication(models.Model):
     ministry = models.ForeignKey(Ministry, related_name='applications', on_delete=models.CASCADE)

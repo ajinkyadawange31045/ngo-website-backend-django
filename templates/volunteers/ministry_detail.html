@@ -4,16 +4,85 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-{% block content %} 
-<div class="page-bar">
+{% block content %}
+<style>
+    .custom-page-bar {
+        background-color: #f8f9fa; /* Light background for the page bar */
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .custom-alert {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1050;
+        max-width: 350px;
+    }
+
+    .custom-container {
+        max-width: 98%;
+        margin: 30px auto; /* Adds more spacing from the edges */
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds shadow for visual depth */
+        background-color: #ffffff; /* Ensures the background stays clean */
+        border-radius: 15px;
+    }
+
+    .custom-img {
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+        border-radius: 10px;
+    }
+
+    .custom-form-label {
+        font-weight: bold;
+    }
+
+    .custom-needs-validation .form-control:invalid {
+        border-color: #dc3545;
+    }
+
+    .custom-needs-validation .invalid-feedback {
+        display: block;
+    }
+
+    .custom-submit-btn {
+        width: 100%; /* Full-width on smaller screens */
+        padding: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .custom-submit-btn {
+            width: auto; /* Auto-width on larger screens */
+        }
+    }
+
+    .other-volunteer-options {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 15px;
+    }
+    .other-volunteer-options h4 {
+        margin-bottom: 20px;
+    }
+    .volunteer-list-item {
+        padding: 10px 0;
+    }
+</style>
+<div class="custom-page-bar">
     <div class="px-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <span class="text-decoration-none">{{ ministry.title }}</span>
-    </div>  
+    </div>
 </div>
 
-{% if messages %}
-    <div class="position-fixed top-0 start-0 mx-3" style="z-index: 1050;">
+<div class="custom-container">
+    {% if messages %}
+    <div class="custom-alert">
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ message }}
@@ -21,76 +90,106 @@
             </div>
         {% endfor %}
     </div>
-{% endif %}
+    {% endif %}
 
-<div class="container my-5">
-    <h2 class="text-center mb-4">{{ ministry.title }}</h2>
-    <img src="{{ ministry.image.url }}" alt="{{ ministry.title }}" class="img-fluid rounded mb-4">
-    <p class="lead text-center">{{ ministry.instructions | safe }}</p>
-
-    <h3 class="mt-5">Apply as a Volunteer</h3>
-
-    <form method="post" class="needs-validation" novalidate>
-        {% csrf_token %}
+    <div class="row">
+        <h2 class="text-center mb-4">{{ ministry.title }}</h2>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            {% if ministry.youtube_embed_link %}
+            <div class="ratio ratio-16x9 mt-4">
+                <iframe src="{{ ministry.youtube_embed_link }}" class="w-100" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+            <img src="{{ ministry.image.url }}" alt="{{ ministry.title }}" class="custom-img rounded my-4 text-center">
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12">
+            <p class="lead text-center">{{ ministry.instructions | safe }}</p>
+        </div>
         
+
+    </div>
+
+<hr>
+
+    <h3 class="my-3">Apply as a Volunteer or Suggest Role</h3>
+
+    <form method="post" class="custom-needs-validation" novalidate>
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="id_name" class="form-label">Name</label>
+            <label for="id_name" class="custom-form-label" data-bs-toggle="tooltip" title="Please enter your full name.">Name</label>
             {{ form.name }}
             <div class="invalid-feedback">
-                {% for error in form.name.errors %}
-                    {{ error }}<br>
-                {% endfor %}
+                {% for error in form.name.errors %}{{ error }}<br>{% endfor %}
             </div>
         </div>
-
+    
         <div class="mb-3">
-            <label for="id_email" class="form-label">Email</label>
+            <label for="id_email" class="custom-form-label" data-bs-toggle="tooltip" title="We will use this email to contact you.">Email</label>
             {{ form.email }}
             <div class="invalid-feedback">
-                {% for error in form.email.errors %}
-                    {{ error }}<br>
-                {% endfor %}
+                {% for error in form.email.errors %}{{ error }}<br>{% endfor %}
             </div>
         </div>
-
+    
         <div class="mb-3">
-            <label for="id_role" class="form-label">Role</label>
+            <label for="id_role" class="custom-form-label" data-bs-toggle="tooltip" title="Specify your role as a volunteer.">Role</label>
             {{ form.role }}
             <div class="invalid-feedback">
-                {% for error in form.role.errors %}
-                    {{ error }}<br>
-                {% endfor %}
+                {% for error in form.role.errors %}{{ error }}<br>{% endfor %}
             </div>
         </div>
-
+    
         <div class="mb-3">
-            <label for="id_message" class="form-label">Message</label>
+            <label for="id_message" class="custom-form-label" data-bs-toggle="tooltip" title="Provide any message or suggestions here.">Message</label>
             {{ form.message }}
             <div class="invalid-feedback">
-                {% for error in form.message.errors %}
-                    {{ error }}<br>
-                {% endfor %}
+                {% for error in form.message.errors %}{{ error }}<br>{% endfor %}
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+    
+        <button type="submit" class="btn btn-primary custom-submit-btn">Submit</button>
     </form>
+    
+    <!-- Add this script to activate tooltips -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
+    
 
     {% if form.errors %}
-        <div class="alert alert-danger mt-4">
-            <p>Please correct the following errors:</p>
-            <ul>
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-                {% for error in form.non_field_errors %}
+    <div class="alert alert-danger mt-4">
+        <p>Please correct the following errors:</p>
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
-            </ul>
-        </div>
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     {% endif %}
+
+    <!-- Section for other volunteer options -->
+    <div class="other-volunteer-options">
+        <h4>Other Volunteering Opportunities</h4>
+        <ul class="list-unstyled">
+            {% for other_ministry in other_ministries %}
+            <li class="volunteer-list-item">
+                <a href="{% url 'ministry_detail' other_ministry.url %}" class="text-decoration-none">
+                    {{ other_ministry.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 <script>
