@@ -17,6 +17,7 @@ urlpatterns = [
     path('our-reach', our_reach ,name="our_reach" ),
     path('school-covered', school_covered ,name="school_covered" ),
     path('research', research ,name="research" ),
+    path('donate', donation ,name="donation" ),
     # path('/',  ,name="" ),
 ]
 

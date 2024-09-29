@@ -41,6 +41,8 @@ def school_covered(request):
 def research(request):
     return render(request,'non-blog/what-we-do/research.html')
 
+def donation(request):
+    return render(request,'donations/donation-cards.html')
 
 
 # sample

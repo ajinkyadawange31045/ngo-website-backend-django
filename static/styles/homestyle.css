@@ -129,7 +129,7 @@ p, a, li, button, input {
     display: inline-block;
     font-size: 1em;
     background: #fff;
-    padding: 10px 10px;
+    padding: 0.21739130434782608em 0.21739130434782608em;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 500;
@@ -154,7 +154,7 @@ p, a, li, button, input {
 
     .textard a {
         font-size: 0.9em;
-        padding: 8px 15px;
+        padding:0.17391304347826086em0.32608695652173914em;
     }
 }
 
@@ -170,7 +170,7 @@ p, a, li, button, input {
 
     .textard a {
         font-size: 0.8em;
-        padding: 6px 10px;
+        padding: 6px 0.21739130434782608em;
     }
 }
 
@@ -195,7 +195,7 @@ p, a, li, button, input {
 
 .social li a {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 0.21739130434782608em;
     filter: invert(1);
     transform: scale(0.5);
     transition: 0.5s;
@@ -213,7 +213,7 @@ p, a, li, button, input {
 *********************************/
 .circle {
     width: 240px;
-    margin: 15px auto;
+    margin:0.32608695652173914em auto;
     display: inline-block;
     position: relative;
     text-align: center;
@@ -242,7 +242,7 @@ p, a, li, button, input {
     border-radius: 50%;
     padding: 20px !important;
     margin-top: 20px;
-    border: 10px solid #d6d6d6;
+    border: 0.21739130434782608em solid #d6d6d6;
     transition: border-color 0.3s ease;
 }
 
@@ -253,9 +253,9 @@ p, a, li, button, input {
 
 .we_work_wrap h5 {
     text-align: center;
-    padding: 8px;
+    padding:0.17391304347826086em;
     color: #000000;
-    margin-top: 15px;
+    margin-top:0.32608695652173914em;
     width: 100%;
     word-break: break-word;
     font-family: 'MontserratRegular';
@@ -295,7 +295,7 @@ p, a, li, button, input {
     height: 100%; /* Ensures the image takes up the full height of the container */
     object-fit: cover; /* This maintains the aspect ratio and ensures the image covers the container */
     object-position: center; /* This centers the image within the container */
-    border-radius: 10px; /* Optional: Keeps the rounded corners */
+    border-radius: 0.21739130434782608em; /* Optional: Keeps the rounded corners */
 }
 
 /*********************************
@@ -304,7 +304,7 @@ p, a, li, button, input {
 .dream_img img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 0.21739130434782608em;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -313,8 +313,8 @@ p, a, li, button, input {
 }
 
 .dream_content h5 {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size:0.5217391304347826em;
+    margin-bottom:0.32608695652173914em;
 }
 
 .quotescontent p {
@@ -452,7 +452,7 @@ p, a, li, button, input {
 }
 
 .ministriesGrid-item {
-    flex: 1 1 calc(50% - 10px); /* Adjust to account for margin */
+    flex: 1 1 calc(50% - 0.21739130434782608em); /* Adjust to account for margin */
     margin: 5px; /* Set margin to create space between items */
     position: relative;
     background: #000;
@@ -462,14 +462,14 @@ p, a, li, button, input {
 
 @media (min-width: 768px) {
     .ministriesGrid-item {
-        flex: 1 1 calc(48% - 10px); /* Adjust for medium screens */
+        flex: 1 1 calc(48% - 0.21739130434782608em); /* Adjust for medium screens */
         height: 200px; /* Adjust height */
     }
 }
 
 @media (min-width: 992px) {
     .ministriesGrid-item {
-        flex: 1 1 calc(25% - 10px); /* Adjust for larger screens */
+        flex: 1 1 calc(25% - 0.21739130434782608em); /* Adjust for larger screens */
         height: 200px; /* Maintain height */
     }
 }
@@ -539,7 +539,7 @@ p, a, li, button, input {
     transition: opacity .35s;
     font-weight: 600;
     text-shadow: 0 0 3px rgba(0, 0, 0, .25);
-    padding: 0 10px;
+    padding: 0 0.21739130434782608em;
     line-height: 1.2;
     z-index: 2;
     text-align: center;
@@ -580,7 +580,7 @@ p, a, li, button, input {
     position: relative;
     top: 50%;
     transform: translate(0, -50%);
-    padding: 0 10px;
+    padding: 0 0.21739130434782608em;
 }
 
 .ministriesGrid-caption {
@@ -598,7 +598,7 @@ p, a, li, button, input {
 .ministriesGrid-btn {
     max-width: 100%;
     font-size: 12px;
-    margin: 10px 10px;
+    margin: 0.21739130434782608em 0.21739130434782608em;
 }
     .btn-black.btn-inverse.rowDonate-btn,
     .btn-black.btn-inverse.rowDonate-submit,
@@ -622,7 +622,7 @@ p, a, li, button, input {
     .ministriesGrid-btn {
         max-width: 100%;
         font-size: 12px;
-        margin: 10px 10px;
+        margin: 0.21739130434782608em 0.21739130434782608em;
     }
 
     .ministriesGrid-title,
@@ -674,7 +674,7 @@ p, a, li, button, input {
 
 .vision_mision_sec .v_item {
     position: relative;
-    margin-left: 15px;
+    margin-left:0.32608695652173914em;
 }
 
 .vision_mision_sec .content_wrap {
@@ -689,18 +689,18 @@ p, a, li, button, input {
 
 .static_item {
     text-align: center; /* Center-align text under images */
-    margin: 10px; /* Add some margin around each card */
+    margin: 0.21739130434782608em; /* Add some margin around each card */
 }
 
 .static_image {
     width: 100%; /* Full width of the parent container */
     height: auto; /* Maintain aspect ratio */
     border: 1px solid #F4BC21; /* Border color */
-    border-radius: 8px; /* Optional: slightly rounded corners */
+    border-radius:0.17391304347826086em; /* Optional: slightly rounded corners */
 }
 
 .content_wrap {
-    margin-top: 10px; /* Space between the image and the text */
+    margin-top: 0.21739130434782608em; /* Space between the image and the text */
 }
 
 .content_wrap h6 {
@@ -788,14 +788,14 @@ p, a, li, button, input {
 
 .vision-item h4,
 .vision-item p {
-    margin: 0 0 10px 0; /* Add bottom margin for spacing */
+    margin: 0 0 0.21739130434782608em 0; /* Add bottom margin for spacing */
 }
 
 .btn-readmore {
     margin-top: 20px;
     background-color: #EE771D; /* Button color */
     color: white;
-    padding: 10px 20px;
+    padding: 0.21739130434782608em 20px;
     border-radius: 4px;
     text-decoration: none;
 }
@@ -817,29 +817,29 @@ p, a, li, button, input {
     }
 
     .vision-item {
-        margin-bottom: 15px;
+        margin-bottom:0.32608695652173914em;
         padding-left: 0;
     }
 
     .vision-item h4,
     .vision-item p {
-        margin: 0 0 10px 0;
+        margin: 0 0 0.21739130434782608em 0;
     }
 
     .btn-readmore {
-        padding: 8px 16px;
+        padding:0.17391304347826086em 16px;
     }
 }
 
 /* Specific Adjustments for Very Small Screens */
 @media (max-width: 576px) {
     .offset1 {
-        padding-left: 10px; /* Reduced padding for very small screens */
-        margin-top: 15px; /* Adjust margin if needed */
+        padding-left: 0.21739130434782608em; /* Reduced padding for very small screens */
+        margin-top:0.32608695652173914em; /* Adjust margin if needed */
     }
 
     .vision-item {
-        margin-bottom: 10px; /* Adjust bottom margin */
+        margin-bottom: 0.21739130434782608em; /* Adjust bottom margin */
     }
 
     .vision-item h4,
@@ -915,7 +915,7 @@ Time line css
     text-align: center;
     display: inline-block;
     border-radius: 25px; /* Only round the corners */
-    padding: 15px; /* Add padding to make it look better */
+    padding:0.32608695652173914em; /* Add padding to make it look better */
     font-size: 18px;
     font-weight: bold;
     transition: all 0.3s ease-in-out; /* Smooth transition effect */
@@ -925,7 +925,7 @@ Time line css
 
 .blog-link:hover {
     transform: translateY(-5px); /* Move up on hover */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+    box-shadow: 00.17391304347826086em0.32608695652173914em rgba(0, 0, 0, 0.3); /* Add shadow on hover */
     background-color: #f8f9fa; /* Slight background change on hover */
     color: black;
 }
@@ -950,27 +950,25 @@ box shadow for donations page
 .contribution_form_section {
     padding: 20px; /* Consistent padding */
     border: none;
-    margin: 5px 5px; /* Adjusted margin for better alignment */
     background: rgba(255, 255, 255, 0.9); 
-    border-radius: 15px; 
-    box-shadow: 0 4px 8px rgba(27, 27, 27, 0.1);  
+    border-radius: 5px; 
 }
 
 .contribution_form_section .row {
-    margin: 0 0 12px; /* Adjusted margin */
-    font-size: 15px; /* Increased font size for readability */
+    /* margin: 0 0 12px; Adjusted margin */
+    /* font-size:0.32608695652173914em; Increased font size for readability */
 }
 
 .sponspor_text {
     font-size: 18px; /* Larger font size for emphasis */
     font-weight: 700;
     color: #004e80; /* Keep the color scheme */
-    padding-top: 10px;
+    padding-top: 0.21739130434782608em;
     margin-bottom: 12px; /* Space below the sponsor text */
 }
 
 input {
-    padding: 10px; /* Consistent input padding */
+    padding: 0.21739130434782608em; /* Consistent input padding */
     font-size: 14px; /* Clear font size */
     font-family: 'Raleway', sans-serif; /* Include fallback */
     border: 1px solid #b2b2b2 !important; /* Maintain border styling */
@@ -992,7 +990,7 @@ input:focus {
 
 .full {
     width: 100%;
-    border-radius: 10px; /* Slightly rounded corners for inputs */
+    border-radius: 0.21739130434782608em; /* Slightly rounded corners for inputs */
 }
 
 .form-text {

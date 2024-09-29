@@ -27,14 +27,31 @@
       <span class="text-muted">/ Educational Empowerment Programs</span> 
     </div>
   </div>
+<div class="container">
+  
+  <h2>Support our Educational Empowerment Program</h2>
+  <div class="content-fit">
+    <img style="max-width: 100%;" src="{% static 'images/food.jpg' %}" alt="" />
+  </div>
+</div>
 
+  
   <div class="container my-4">
-    <h2>Support our Educational Empowerment Program</h2>
-    <div class="content-fit">
-      <img style="max-width: 100%;" src="{% static 'images/food.jpg' %}" alt="" />
-    </div>
-
     <div class="row mt-3">
+      <div class="col-lg-6 mt-3">
+        <p>At SenaFoundation, we believe that education is the key to changing lives. Our Educational Empowerment Programs aim to provide learning opportunities for children, youth, and women from poor or disadvantaged backgrounds. We work hard to help them gain the knowledge, skills, and values they need to build a brighter future for themselves and their families.</p>
+        <p>
+          <ul>
+            <h5>What We Do</h5>
+            <li>Scholarships and Financial Help: We offer scholarships and financial support to students who cannot afford education. This helps them stay in school and focus on learning without worrying about money.</li>
+            <li>Skill Development Workshops: These workshops teach practical skills like using computers, communication, and starting small businesses. This training helps people find jobs and become self-reliant.</li>
+            <li>Seminars and Conferences: We organize seminars where experts talk about important topics like education, careers, and personal development. This helps students, teachers, and parents stay informed and motivated.</li>
+            <li>Extra Classes and Tutoring: Many students, especially those from poor backgrounds, struggle to keep up with their studies. We provide extra classes to help them improve in subjects like math, science, and languages.</li>
+            <li>Womens Literacy Programs: We run programs to teach basic reading and writing skills to adult women. This helps them gain independence, make better decisions for their families, and improve their lives.</li>
+            <li>School Supplies Support: We provide books, notebooks, and other school materials to students in need, so they can continue their education without any obstacles.</li>
+          </ul>
+        </p>
+      </div>
       <div class="col-lg-6">
         <form class="donationform shadow-float-ajinkya user-options px-3" action="donation-confirmation" method="post" name="form_donation" id="form_donation" novalidate="novalidate">
           <div class="contribution_form_section">
@@ -165,7 +182,7 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <input placeholder="Whatsapp Number" name="mobile" id="mobile" type="tel" class="full" value="" onfocus="chk_citizenshipsel();" style="border-color: rgb(255, 0, 0);" />
-                          <p for="pan_number" style="font-size: 12px; margin-left: 3px;">Please share your WhatsApp number for donation updates and receipts.</p>
+                          <p for="pan_number" style="font-size: 12px; padding-left: 3px;">Please share your WhatsApp number for donation updates and receipts.</p>
                         </div>
                         <div class="col-md-6">
                           <input oninput="this.className = ''" placeholder="Alternate Mobile Number" name="alternate_mobile" id="alternate_mobile" type="tel" class="full" value="" onfocus="chk_citizenshipsel();" />
@@ -174,7 +191,7 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <input id="pan" name="pan" maxlength="10" type="text" placeholder="PAN Card No. " class="full pan-card-num" value="" style="text-transform: uppercase; border-color: rgb(255, 0, 0);" onkeyup="chkcitizenshipsel()" onfocus="chk_citizenshipsel();" />
-                          <p for="pan_number" style="font-size: 12px; margin-left: 3px;">To get the 80-G certificate,please enter your PAN number</p>
+                          <p for="pan_number" style="font-size: 12px; padding-left: 3px;">To get the 80-G certificate,please enter your PAN number</p>
                         </div>
                         <div class="col-sm-12 col-lg-6" style="margin-bottom: 10px;">
                           <input type="hidden" id="country_id" name="country_id" value="1" style="display: inline-block;" />
@@ -198,7 +215,7 @@
 
                       <!-- Captcha start -->
                       <div class="donordetails citizen_type">
-                        <label class="pl-3" style="margin: 20px 0 20px 0px;font-size:15px;">Captcha</label>
+                        <label class="pl-3 my-3" style="font-size:15px;">Captcha</label>
                         <div class="row">
                           <div class="col-md-2 col-12 mt-2 mb-2">
                             <div class="inline_c">
@@ -793,20 +810,9 @@
         </form>
       </div>
     </div>
-      <div class="col-lg-6 mt-3 px-4">
-        <p>At SenaFoundation, we believe that education is the key to changing lives. Our Educational Empowerment Programs aim to provide learning opportunities for children, youth, and women from poor or disadvantaged backgrounds. We work hard to help them gain the knowledge, skills, and values they need to build a brighter future for themselves and their families.</p>
-        <p>
-          <ul>
-            <h5>What We Do</h5>
-            <li>Scholarships and Financial Help: We offer scholarships and financial support to students who cannot afford education. This helps them stay in school and focus on learning without worrying about money.</li>
-            <li>Skill Development Workshops: These workshops teach practical skills like using computers, communication, and starting small businesses. This training helps people find jobs and become self-reliant.</li>
-            <li>Seminars and Conferences: We organize seminars where experts talk about important topics like education, careers, and personal development. This helps students, teachers, and parents stay informed and motivated.</li>
-            <li>Extra Classes and Tutoring: Many students, especially those from poor backgrounds, struggle to keep up with their studies. We provide extra classes to help them improve in subjects like math, science, and languages.</li>
-            <li>Womens Literacy Programs: We run programs to teach basic reading and writing skills to adult women. This helps them gain independence, make better decisions for their families, and improve their lives.</li>
-            <li>School Supplies Support: We provide books, notebooks, and other school materials to students in need, so they can continue their education without any obstacles.</li>
-          </ul>
-        </p>
-      </div>
+
+    
+     
     </div>
   </div>
 

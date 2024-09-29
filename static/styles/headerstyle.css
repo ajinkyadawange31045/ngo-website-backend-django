@@ -120,7 +120,7 @@
 *********************************/
 
 .main_nav {
-    margin-left: 46px;
+    margin-left: 1em;
 }
 
 .main_nav ul li {
@@ -152,7 +152,7 @@
         width: 100%;
         background: rgba(11, 9, 10, 0.7);
         position: absolute;
-        top: 80px;
+        top: 1.7391304347826086em;
         left: 0;
     }
 
@@ -181,12 +181,12 @@
 
 .dropdown-menu1 {
     display: none;
-    position: absolute;
+    position: absolute; 
     background-color: #080808f0;
     width: 40rem; /* Fixed width for all dropdowns */
     z-index: 1;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.548);
-    padding: 10px;
+    box-shadow: 0 0.17391304347826086em 0.34782608695652173em  rgba(0, 0, 0, 0.548);
+    padding: 0.21739130434782608em;
     left: 0; /* Fixed at the same position for all */
     overflow: hidden;
 }
@@ -197,8 +197,8 @@
     background-color: #080808f0;
     width: 40rem; /* Fixed width for all dropdowns */
     z-index: 1;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.548);
-    padding: 10px;
+    box-shadow: 0 0.17391304347826086em 0.34782608695652173em  rgba(0, 0, 0, 0.548);
+    padding: 0.21739130434782608em;
     left: 0; /* Fixed at the same position for all */
     overflow: hidden;
     transform: translateX(-50%);
@@ -225,7 +225,7 @@
     white-space: nowrap; /* Prevent text wrapping */
     overflow: hidden; /* Hide any overflowed content */
     text-overflow: ellipsis; /* Adds "..." if text overflows */
-    padding: 8px 15px;
+    padding: 0.17391304347826086em 15px;
     color: rgb(255, 255, 255);
 }
 
@@ -237,7 +237,7 @@
     white-space: nowrap; /* Prevent text wrapping */
     overflow: hidden; /* Hide any overflowed content */
     text-overflow: ellipsis; /* Adds "..." if text overflows */
-    padding: 8px 15px;
+    padding: 0.17391304347826086em 15px;
     color: rgb(255, 255, 255);
 }
 
@@ -279,7 +279,7 @@
     }
 
     .dropdown-item {
-        padding: 5px 10px; /* Reduce padding inside each item */
+        padding: 5px 0.21739130434782608em; /* Reduce padding inside each item */
         font-size: 14px; /* Slightly smaller font size for smaller screens */
     }
 }
