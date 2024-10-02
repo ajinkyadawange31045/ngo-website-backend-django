@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('impact_stories.urls')), 
     path('', include('non_blog.urls')), 
     path('', include('volunteers.urls')), 
+    path('', include('donations.urls')), 
 ]
