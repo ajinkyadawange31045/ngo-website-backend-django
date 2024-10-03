@@ -1,19 +1,33 @@
 <!-- navbar -->
+{% load static %}
 <header class="header">
   <div class="container">
     <div class="row">
       <div class="col">
         <div class="header_content d-flex flex-row align-items-center justify-content-start">
           <button class="navbar-toggler offcanvas-trigger text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
-            <svg class="svg-icon" style="width: 1.2em; height: 1.2em; vertical-align: middle; fill: #ffffff; overflow: hidden; stroke: #ffffff; stroke-width: 20;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-              <path d="M987.7 86.8H367.3c-20.1 0-36.3 11-36.3 24.7v178.1c0 13.7 16.2 24.7 36.3 24.7h620.4c20.1 0 36.3-11 36.3-24.7v-178c0-13.8-16.2-24.8-36.3-24.8zM987.7 398.2H367.3c-20.1 0-36.3 11-36.3 24.7V601c0 13.7 16.2 24.7 36.3 24.7h620.4c20.1 0 36.3-11 36.3-24.7V423c0-13.7-16.2-24.8-36.3-24.8zM987.7 709.7H367.3c-20.1 0-36.3 11-36.3 24.7v178.1c0 13.7 16.2 24.7 36.3 24.7h620.4c20.1 0 36.3-11 36.3-24.7V734.4c0-13.7-16.2-24.7-36.3-24.7zM209.6 276.7L9.9 500.9c-5.6 6.3-5.6 15.9 0 22.2l199.7 224.2c10.2 11.4 29.1 4.2 29.1-11.1V287.8c0-15.3-18.9-22.6-29.1-11.1z" />
-            </svg>
+            {% comment %} <svg class="svg-icon" style="width: 1.2em; height: 1.2em; vertical-align: middle; fill: #ffffff; overflow: hidden; stroke: #ffffff; stroke-width: 20;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> {% endcomment %}
+              {% comment %} <path d="M987.7 86.8H367.3c-20.1 0-36.3 11-36.3 24.7v178.1c0 13.7 16.2 24.7 36.3 24.7h620.4c20.1 0 36.3-11 36.3-24.7v-178c0-13.8-16.2-24.8-36.3-24.8zM987.7 398.2H367.3c-20.1 0-36.3 11-36.3 24.7V601c0 13.7 16.2 24.7 36.3 24.7h620.4c20.1 0 36.3-11 36.3-24.7V423c0-13.7-16.2-24.8-36.3-24.8zM987.7 709.7H367.3c-20.1 0-36.3 11-36.3 24.7v178.1c0 13.7 16.2 24.7 36.3 24.7h620.4c20.1 0 36.3-11 36.3-24.7V734.4c0-13.7-16.2-24.7-36.3-24.7zM209.6 276.7L9.9 500.9c-5.6 6.3-5.6 15.9 0 22.2l199.7 224.2c10.2 11.4 29.1 4.2 29.1-11.1V287.8c0-15.3-18.9-22.6-29.1-11.1z" /> {% endcomment %}
+              
+              <img 
+              class="header-search-icon" 
+              src="{% static 'images/sidebar.png' %}" 
+              alt="Search icon for the sidebar" 
+              width="32"   
+              height="32"   
+              loading="lazy" 
+            />
+            
+            
           </button>
+          
           <nav class="main_nav">
             <ul>
               <li class="mr-1">
                 <a class="navbar-brand" href="#"><img src="ajinkya.jpeg" alt="AJINKYA" style="width: 40px;" class="rounded-circle me-4" /></a>
+                
               </li>
+             
 
               <li class="nav-item px-2 text-light" style="animation: zoomOutIn 0.8s ease-in-out forwards; animation-delay: 0.1s;">
                 <div class="dropdownard">
@@ -292,36 +306,70 @@
   </div>
   <div class="offcanvas-body">
     <ul class="navbar-nav">
-      <!--  <li class="mr-1">
-                    <a class="navbar-brand" href="#">
-                        <img src="ajinkya.jpeg" alt="AJINKYA" style="width: 40px;" class="rounded-circle me-4">
-                    </a>
-                </li>  -->
+      <li class="mr-1">
+        <a class="navbar-brand" href="#"><img src="ajinkya.jpeg" alt="AJINKYA" style="width: 40px;" class="rounded-circle me-4" /></a>
+        
+      </li>
+      <li class="nav-item px-2 text-light" style="animation: zoomOutIn 0.8s ease-in-out forwards; animation-delay: 0.5s;">
+        <a href="/donate" class="nav-item btn text-decoration-none font-monospace text-light donate-btn">DONATE</a>
+      </li>
+      <!-- ABOUT US SECTION -->
       <li class="menu_mm px-1 text-light">
         <a href="#about-us" class="nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;">ABOUT US</a>
+        <ul class="list-unstyled px-3">
+          <li><a class="dropdown-item" href="/about-us">About Us</a></li>
+          <li><a class="dropdown-item" href="/vision-and-mission">Our Vision and Mission</a></li>
+          <li><a class="dropdown-item" href="/board-of-members">Board of Trustees</a></li>
+          <li><a class="dropdown-item" href="/advisory-board">Advisor Board</a></li>
+          <li><a class="dropdown-item" href="/leadership-team">Leadership Team</a></li>
+        </ul>
       </li>
+
+      <!-- GET INVOLVED SECTION -->
       <li class="menu_mm px-1 text-light">
         <a href="#get-involved" class="nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;">GET INVOLVED</a>
+        <ul class="list-unstyled px-3">
+          <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
+          <li><a class="dropdown-item" href="/donate">Donate</a></li>
+          <li><a class="dropdown-item" href="/partnerships">Partnership Opportunities</a></li>
+          <li><a class="dropdown-item" href="/events">Events</a></li>
+          <li><a class="dropdown-item" href="/fundraising">Fundraising</a></li>
+        </ul>
       </li>
+
+      <!-- PROGRAMS SECTION -->
       <li class="menu_mm px-1 text-light">
         <a href="#programs" class="nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;">PROGRAMS</a>
+        <ul class="list-unstyled px-3">
+          <li><a class="dropdown-item" href="/programs/education">Educational Programs</a></li>
+          <li><a class="dropdown-item" href="/programs/health">Health Programs</a></li>
+          <li><a class="dropdown-item" href="/programs/community">Community Development</a></li>
+          <li><a class="dropdown-item" href="/programs/environment">Environmental Awareness</a></li>
+          <li><a class="dropdown-item" href="/programs/cultural">Cultural Enrichment</a></li>
+        </ul>
       </li>
+
+      <!-- BLOGS SECTION -->
       <li class="menu_mm px-1 text-light">
         <a href="#blogs" class="nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;">BLOGS</a>
+        <ul class="list-unstyled px-3">
+          <li><a class="dropdown-item" href="/blogs/latest">Latest Blogs</a></li>
+          <li><a class="dropdown-item" href="/blogs/updates">Updates</a></li>
+          <li><a class="dropdown-item" href="/blogs/tips">Tips and Resources</a></li>
+          <li><a class="dropdown-item" href="/blogs/news">News</a></li>
+        </ul>
       </li>
+
+      <!-- OTHER CATEGORIES -->
       <li class="menu_mm px-1 text-light">
-        <div class="dropdownard show">
-          <a class="btn btn-block dropdown-toggle dropbtnard nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;" href="javascript:void(0);" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-          <div class="dropdown-menu dropdownard-content" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/category/{{ cat.url }}">{{ cat.title }}</a>
-            <a href="/our_youtube_videos" class="dropdown-item">Videos</a>
-            <a href="/gallery" class="dropdown-item">Gallery</a>
-          </div>
-        </div>
+        <a href="#categories" class="nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;">CATEGORIES</a>
+        <ul class="list-unstyled px-3">
+          <li><a class="dropdown-item" href="/category/{{ cat.url }}">{{ cat.title }}</a></li>
+          <li><a href="/our_youtube_videos" class="dropdown-item">Videos</a></li>
+          <li><a href="/gallery" class="dropdown-item">Gallery</a></li>
+        </ul>
       </li>
-      <li class="menu_mm px-1 text-light">
-        <button type="button" class="nav-item btn btn-warning text-decoration-none font-monospace" style="font-weight: bold; animation: zoomOutIn 0.8s ease-in-out forwards; animation-delay: 1.0s;">DONATE</button>
-      </li>
+
     </ul>
   </div>
 </div>
