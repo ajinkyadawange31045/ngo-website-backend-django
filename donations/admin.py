@@ -1,14 +1,8 @@
-# your_app/admin.py
 from django.contrib import admin
-from .models import DonationItem
+from .models import Donation
 
-@admin.register(DonationItem)
-class DonationItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'description')
-    search_fields = ('name',)
-
-# Optionally, you can customize the admin interface further:
-# class DonationItemAdmin(admin.ModelAdmin):
-#     list_display = ('name', 'price', 'description', 'created_at')
-#     search_fields = ('name',)
-#     list_filter = ('created_at',)
+@admin.register(Donation)
+class DonationAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'donation_amount', 'other_amount', 'citizenship', 'created_at')
+    search_fields = ('full_name', 'email', 'mobile')
+    list_filter = ('citizenship', 'created_at')

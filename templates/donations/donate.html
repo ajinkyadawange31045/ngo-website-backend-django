@@ -1,0 +1,45 @@
+{% extends "base/base_other_pages.html" %}
+
+{% block content %}
+<section class="about_section_two">
+  <div class="container">
+    <form method="post" action="{% url 'donate' %}" id="form_donation">
+      {% csrf_token %}
+      <div class="steps-container">
+        <span class="step active">STEP 1: Choose Donation Amount</span>
+        <span class="step">STEP 2: Select Payment Method</span>
+        <span class="step">STEP 3: Donation Submitted</span>
+      </div>
+
+      <div class="donation_amount_wrap">
+        {{ form.donation_amount }}
+        {{ form.other_amount }}
+      </div>
+
+      <div class="citizenship">
+        <label>Select your Citizenship</label>
+        {{ form.citizenship }}
+      </div>
+
+      <div class="donor-details">
+        <label>Full Name</label>
+        {{ form.full_name }}
+
+        <label>Email</label>
+        {{ form.email }}
+
+        <label>Birthdate</label>
+        {{ form.birth_date }}
+
+        <label>PAN Number</label>
+        {{ form.pan_number }}
+
+        <label>Mobile</label>
+        {{ form.mobile }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Donate Now</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

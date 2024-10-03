@@ -42,7 +42,7 @@ def research(request):
     return render(request,'non-blog/what-we-do/research.html')
 
 def donation(request):
-    return render(request,'donations/donation-cards.html')
+    return render(request,'forms/donations.html')
 
 
 # sample

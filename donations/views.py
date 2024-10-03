@@ -1,60 +1,80 @@
 # views.py
+import razorpay
+from django.conf import settings
 from django.shortcuts import render, redirect
-from .models import DonationItem
+from django.urls import reverse
+from .forms import DonationForm
+from .models import Donation
 
-def get_cart(request):
-    # Retrieve cart from session or create a new one
-    if 'cart' not in request.session:
-        request.session['cart'] = []
-    return request.session['cart']
+def donate(request):
+    if request.method == 'POST':
+        form = DonationForm(request.POST)
+        if form.is_valid():
+            # Save donation details locally
+            donation = form.save(commit=False)
 
+            # Razorpay client instance
+            client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
-# your_app/views.py
-from django.shortcuts import render, redirect
-from .models import DonationItem
+            # Create Razorpay order
+            order_amount = int(donation.donation_amount * 100)  # Amount in paise
+            order_currency = 'INR'
+            order_receipt = f'donation_rcptid_{donation.id}'
+            razorpay_order = client.order.create({
+                'amount': order_amount,
+                'currency': order_currency,
+                'receipt': order_receipt,
+                'payment_capture': '1'
+            })
 
-# your_app/views.py
-from django.shortcuts import render, redirect
-from .models import DonationItem
+            # Save Razorpay order details
+            donation.razorpay_order_id = razorpay_order['id']
+            donation.save()
 
-def donation_items(request):
-    items = DonationItem.objects.all()
-    return render(request, 'donations-cart/donation_items.html', {'items': items})
+            # Redirect to payment page
+            context = {
+                'order_id': razorpay_order['id'],
+                'razorpay_key': settings.RAZORPAY_KEY_ID,
+                'amount': order_amount,
+                'donation': donation
+            }
+            return render(request, 'donations/razorpay_payment.html', context)
 
-def view_cart(request):
-    # Ensure cart is a dictionary
-    cart = request.session.get('cart', {})
-    items = DonationItem.objects.filter(id__in=cart.keys())
-    total_price = sum(item.price * cart[str(item.id)] for item in items)
-    return render(request, 'donations-cart/view_cart.html', {'items': items, 'cart': cart, 'total_price': total_price})
+    else:
+        form = DonationForm()
 
-def add_to_cart(request):
-    if request.method == 'POST':  # Check if the request method is POST
-        item_id = request.POST.get('item_id')  # Get the item ID from the submitted form
-        quantity = int(request.POST.get('quantity', 0))  # Get the quantity (default to 0)
-
-        if quantity > 0:  # Only add if quantity is greater than 0
-            # Retrieve the cart from the session and ensure it's a dictionary
-            cart = request.session.get('cart', {})  
-            if not isinstance(cart, dict):  # Ensure cart is a dictionary
-                cart = {}
-                
-            # Update cart with item quantities
-            if item_id in cart:
-                cart[item_id] += quantity  # Update quantity if item already exists
-            else:
-                cart[item_id] = quantity  # Add new item to cart
-
-            # Save updated cart back to session
-            request.session['cart'] = cart  
-
-    return redirect('donations-cart/donation_items')
+    return render(request, 'donations/donate.html', {'form': form})
 
 
-def payment_page(request):
-    cart = get_cart(request)
-    item_ids = [item['id'] for item in cart]
-    items = DonationItem.objects.filter(id__in=item_ids)
+def donation_confirmation(request):
+    return render(request, 'donations/donation_confirmation.html')
 
-    total_price = sum(item.price * next(i['quantity'] for i in cart if i['id'] == item.id) for item in items)
-    return render(request, 'donations-cart/payment_page.html', {'total_price': total_price})
+# views.py (add a new view for webhook)
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseBadRequest
+import razorpay
+
+@csrf_exempt
+def razorpay_webhook(request):
+    client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+    try:
+        payload = request.body
+        signature = request.headers.get('X-Razorpay-Signature')
+
+        # Razorpay utility to verify signature
+        client.utility.verify_payment_signature({
+            'razorpay_order_id': request.POST.get('razorpay_order_id'),
+            'razorpay_payment_id': request.POST.get('razorpay_payment_id'),
+            'razorpay_signature': signature
+        })
+
+        # Save the transaction details in Donation model
+        donation = Donation.objects.get(razorpay_order_id=request.POST.get('razorpay_order_id'))
+        donation.razorpay_payment_id = request.POST.get('razorpay_payment_id')
+        donation.razorpay_signature = signature
+        donation.save()
+
+        return redirect('donation_confirmation')
+
+    except razorpay.errors.SignatureVerificationError as e:
+        return HttpResponseBadRequest()

@@ -1,0 +1,46 @@
+<!-- razorpay_payment.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate - Razorpay</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+<h1>The Akshaya Patra Foundation</h1>
+<p>*TO FEED 3 MILLION CHILDREN EVERYDAY BY 2025.</p>
+
+<form id="razorpay-form">
+    <input type="hidden" id="order_id" value="{{ order_id }}">
+    <input type="hidden" id="amount" value="{{ amount }}">
+
+    <p>Amount: ₹{{ amount|floatformat:2 }}</p>
+    <p>Transaction ID: {{ order_id }}</p>
+
+    <button id="rzp-button1">Pay Now</button>
+</form>
+
+<script>
+    var options = {
+        "key": "{{ razorpay_key }}", // Enter the Key ID generated from the Dashboard
+        "amount": "{{ amount }}", // Amount in paise
+        "currency": "INR",
+        "name": "The Akshaya Patra Foundation",
+        "description": "Donation",
+        "image": "https://www.akshayapatra.org/images/logo.jpg",
+        "order_id": "{{ order_id }}", // Razorpay order ID
+        "handler": function (response){
+            // Send the payment details to the server for confirmation
+            document.getElementById('razorpay-form').submit();
+        }
+    };
+    var rzp1 = new Razorpay(options);
+
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+    }
+</script>
+
+</body>
+</html>
