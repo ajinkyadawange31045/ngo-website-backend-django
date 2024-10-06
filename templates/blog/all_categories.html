@@ -92,7 +92,7 @@
     {% for category in categories %}
     <div class="category-section my-5">
         <h2 class="mb-4">
-            <span class="toggle-btn" onclick="togglePosts('{{ category.title }}', this)">
+            <span class="toggle-btn text-dark ardajinkya" onclick="togglePosts('{{ category.title }}', this)">
                 <span class="toggle-icon p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16" id="arrow-icon">
                         <polygon points="2,0 12,8 2,16" style="fill: black;" />
@@ -108,9 +108,15 @@
                 {% for post in category.latest_posts %}
                 <div class="col-md-4 col-sm-6 d-flex">
                     <div class="card mb-4 shadow-sm flex-fill">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header text-white" style="background-color: #F4BC21;">
                             <h5 class="mb-0">
-                                <a href="/category/blog/{{ post.url }}" class="text-white text-decoration-none">{{ post.title }}</a>
+                                <a href="/category/blog/{{ post.url }}" 
+   style="color: black; text-decoration: none;" 
+   onmouseover="this.style.color='#007bff';" 
+   onmouseout="this.style.color='black';">
+   {{ post.title }}
+</a>
+
                             </h5>
                         </div>
                         <div class="card-body">

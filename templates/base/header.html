@@ -226,55 +226,25 @@
                   <div class="dropdown-menu dropdownard-content px-4 py-5" aria-labelledby="dropdownMenuLink">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-4 px-1" style="border-right: 2px solid rgba(255, 255, 255, 0.587);">
+                        <div class="col-6 px-1" style="border-right: 2px solid rgba(255, 255, 255, 0.587);">
                           <ul class="list-unstyled">
                             <li>
-                              <a class="dropdown-item" href="/our-work">Our Work</a>
+                              <a class="dropdown-item" href="/category">All Categories</a>
                             </li><br />
-                            <li>
-                              <a class="dropdown-item" href="/educational-seminars">Educational Seminars</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="/free-education">Free Education</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="#">Research</a>
-                            </li>
+                              {% for cat in cat_1 %}
+                              <li><a class="dropdown-item" href="/category/{{cat.url}}">{{cat.title}}</a></li><br>
+                              {% endfor %}
+                            
                           </ul>
                         </div>
-                        <div class="col-4 px-1" style="border-right: 2px solid rgba(255, 255, 255, 0.587);">
+                        <div class="col-6 px-1" style="">
                           <ul class="list-unstyled">
-                            <li>
-                              <a class="dropdown-item" href="/our-reach">Our Reach</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="/school-covered">Schools covered</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="/colleges-covered">Colleges Covered</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="#"></a>
-                            </li>
+                            {% for cat in cat_r %}
+                              <li><a class="dropdown-item" href="/category/{{cat.url}}">{{cat.title}}</a></li><br>
+                              {% endfor %}
                           </ul>
                         </div>
-                        <div class="col-4 px-1">
-                          <ul class="list-unstyled">
-                            <li>
-                              <a class="dropdown-item" href="/initiatives">Impact</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="/#our-stories">Success Stories</a>
-                            </li><br />
-                            <li>
-                              <a class="dropdown-item" href="/our-experience">Experiences</a>
-                            </li>
-                            <br />
-                            <li>
-                              <a class="dropdown-item" href="#"></a>
-                            </li>
-                          </ul>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>
@@ -353,10 +323,11 @@
       <li class="menu_mm px-1 text-light">
         <a href="#blogs" class="nav-link text-light text-decoration-none font-monospace" style="font-weight: bold;">BLOGS</a>
         <ul class="list-unstyled px-3">
-          <li><a class="dropdown-item" href="/blogs/latest">Latest Blogs</a></li>
-          <li><a class="dropdown-item" href="/blogs/updates">Updates</a></li>
-          <li><a class="dropdown-item" href="/blogs/tips">Tips and Resources</a></li>
-          <li><a class="dropdown-item" href="/blogs/news">News</a></li>
+
+          {% for cat in cat1 %}
+          <li><a class="dropdown-item" href="/category/{{cat.url}}">{{cat.title}}</a></li>
+          {% endfor %}
+
         </ul>
       </li>
 

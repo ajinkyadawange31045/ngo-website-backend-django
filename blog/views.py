@@ -22,20 +22,24 @@ from django.contrib.auth import  authenticate,login,logout
 # import time
 from initiatives.models import Initiative
 from impact_stories.models import Stories,DriveImage
-from volunteers.models import Ministry
+# from volunteers.models import Ministry
+from volunteer_forms.models import Ministry
   #
 
 
 def home(request):
     # last 4 updates
     updates = Post.objects.all().order_by('-publish')[:4]
+    first_4_categories = Category.objects.all()[0:3]
+    remaining_categoreis = Category.objects.all()[3:8]
+    categories = Category.objects.all()[0:6]
     # initiatives = Initiative.objects.all() [:10]
     # initiatives = Initiative.objects.filter(status='published')
     initiatives = Initiative.objects.filter(status='published')
     stories = Stories.objects.filter(status='published')
     ministry = Ministry.objects.all()
     # data
-    data = {'updates':updates,'initiatives':initiatives,'stories':stories,'ministry':ministry,}
+    data = {'updates':updates,'initiatives':initiatives,'stories':stories,'ministry':ministry,'cat_1':first_4_categories,'cat_r':remaining_categoreis,'cat1':categories,}
     return render(request, "blog/index.html",data)
 
 def what_we_do1(request):

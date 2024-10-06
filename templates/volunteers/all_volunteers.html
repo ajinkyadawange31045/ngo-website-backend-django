@@ -1,0 +1,131 @@
+{% extends "base/base_other_pages.html" %}
+
+{% block content %}
+<style>
+    .card:hover {
+        transform: scale(1.02);
+        transition: transform 0.2s, box-shadow 0.3s;
+        box-shadow: 0 4px 20px rgba(0, 123, 255, 0.5);
+    }
+
+    .page-bar {
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .view-more-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .view-more-btn:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    .card-img-top {
+        height: 350px; /* Fixed height for uniformity */
+        object-fit: cover; /* Ensures the image covers the space */
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            margin-bottom: 20px; /* Additional spacing for smaller screens */
+        }
+
+        .view-more-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    }
+
+    .pagination .page-link {
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        background-color: #f8f9fa;
+        color: #6c757d;
+    }
+</style>
+
+<div class="page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> /
+        <span class="text-decoration-none">Voluneering Options</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h1 class="text-center my-4">Voluneering Options</h1>
+    
+    <div class="row">
+        {% for ministry in ministries %}
+        <div class="col-md-4 mb-4 ministry-card">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ ministry.image.url }}" class="card-img-top" alt="{{ ministry.title | truncatechars:10 }} image">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        <a href="{% url 'volunteer_detail' ministry.url %}" class="text-decoration-none">{{ ministry.title }}</a>
+                    </h5>
+                    <p class="card-text text-muted">{{ ministry.caption }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning text-center" role="alert">
+            No ministries available.
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if ministries.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">First</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ ministries.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">Previous</span>
+                    </a>
+                </li>
+            {% endif %}
+    
+            <li class="page-item disabled">
+                <span class="page-link">Page {{ ministries.number }} of {{ ministries.paginator.num_pages }}</span>
+            </li>
+    
+            {% if ministries.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ ministries.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">Next</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ ministries.paginator.num_pages }}" aria-label="Last">
+                        <span aria-hidden="true">Last</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}

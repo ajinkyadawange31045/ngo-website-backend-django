@@ -1,0 +1,148 @@
+{% extends 'base/base_other_pages.html' %}
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+{% block content %}
+<style>
+    .custom-page-bar {
+        background-color: #f8f9fa; /* Light background for the page bar */
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .custom-alert {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1050;
+        max-width: 350px;
+    }
+
+    .custom-container {
+        max-width: 98%;
+        margin: 30px auto;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds shadow for visual depth */
+        background-color: #ffffff;
+        border-radius: 15px;
+    }
+
+    .custom-img {
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+        border-radius: 10px;
+    }
+
+    .custom-form-label {
+        font-weight: bold;
+    }
+
+    .custom-submit-btn {
+        width: 100%;
+        padding: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .custom-submit-btn {
+            width: auto; /* Auto-width on larger screens */
+        }
+    }
+
+    /* Ensure responsive embed for Google Form */
+    .google-form-embed {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the embed */
+        border-radius: 10px;
+        margin: 40px auto; /* Center the form */
+    }
+
+    .google-form-embed iframe {
+        width: 100%;
+        border: 0;
+        overflow: hidden;
+    }
+
+    /* Optional: to ensure responsiveness */
+    @media (max-width: 768px) {
+        .custom-container {
+            padding: 15px;
+        }
+        .google-form-embed iframe {
+            height: 1100px; /* Adjust height for smaller screens */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .custom-container {
+            padding: 10px;
+        }
+        .google-form-embed iframe {
+            height: 1200px; /* Further adjustment for very small screens */
+        }
+    }
+</style>
+
+<div class="custom-page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> / <a href="/volunteering-options" class="text-decoration-none">Volunteer-for</a> / 
+        <span class="text-decoration-none">{{ ministry.title }}</span>
+    </div>
+</div>
+
+<div class="custom-container">
+    
+
+    <div class="row">
+        <h2 class="text-center mb-4">{{ ministry.title }}</h2>
+        
+        <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+            {% if ministry.youtube_embed_link %}
+            <div class="ratio ratio-16x9 mt-4">
+                <iframe src="{{ ministry.youtube_embed_link }}" class="w-100" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+            <img src="{{ ministry.image.url }}" alt="{{ ministry.title }}" class="custom-img rounded my-4 w-100"> <!-- Added w-100 for responsive image -->
+        </div>
+        
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <p class="lead text-center">{{ ministry.instructions | safe }}</p>
+        </div>
+    </div>
+    
+
+    <hr>
+
+    <div class="google-form-embed text-center mt-3">
+        <h3 class="my-3">Apply as a Volunteer or Suggest Role</h3>
+        {% if form_embed %}
+            {{ form_embed|safe }}
+        {% else %}
+            <p class="text-center">Google Form is not available at the moment.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+        var iframe = document.querySelector('.google-form-embed iframe');
+        if (iframe) {
+            // Set a timeout to check the height after a while (adjust this according to your needs)
+            setTimeout(function() {
+                var doc = iframe.contentDocument || iframe.contentWindow.document;
+                if (doc) {
+                    iframe.style.height = doc.body.scrollHeight + 'px';
+                }
+            }, 1000); // Wait 1 second for the form to load
+        }
+    });
+</script>
+
+
+{% endblock %}

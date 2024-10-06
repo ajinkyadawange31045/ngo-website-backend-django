@@ -14,7 +14,7 @@
         <h5>(SHIKSHA EVAM NAITIK AADHAR)</h5>
 
         <a class="my-1" href="/about-us"><i class="fa fa-play mr-1"></i> About Us</a>
-        <a class="my-1" href="#"><i class="fa fa-play mr-1"></i> Donate Us</a>
+        <a class="my-1" href="/donate">Donate Us</a>
       </div>
       <ul class="social">
         <li>
@@ -319,7 +319,7 @@
 
 
   {% comment %}Our initiatives{% endcomment %}
-  <div class="container">
+  <div class="container py-4">
     <div class="row my-2">
       <div class="col-12 text-center mb-30 mb-3">
         <h2 class="montregular heading_section color-white">Our Initiatives</h2>
@@ -336,7 +336,7 @@
               <p class="text-muted mb-2 fw-bold">{{ i.date_of_initiative|date:'D, M d, Y' }}</p>
               <p class="text-muted">{{ i.excert|truncatechars:100|safe }}</p>
               <div class="container mt-3">
-                <button type="button" class="btn text-primary" data-bs-toggle="modal" data-bs-target="#modal{{ forloop.counter }}">View more</button>
+                <button type="button" class="btn text-decoration-none text-primary" data-bs-toggle="modal" data-bs-target="#modal{{ forloop.counter }}">View more</button>
               </div>
 
               <div class="modal" id="modal{{ forloop.counter }}">
@@ -352,8 +352,8 @@
                       {% endif %}
                       <p>{{ i.point_wise|safe }}</p>
                       <h4 class="mt-5">Checkout</h4>
-                      <a class="text-light btn btn-dark m-2" href="/initiatives/{{ i.url }}" target="_blank" rel="noreferrer">View all</a>
-                      <a class="text-light btn btn-dark m-2" href="https://ub.nitk.ac.in/" target="_blank" rel="noreferrer">Link</a>
+                      <b><a class="text-light btn btn-dark m-2" href="/initiatives/{{ i.url }}" target="_blank" rel="noreferrer">View all</a></b>
+                      <a class="text-light btn btn-dark m-2" href="/donate" target="_blank" rel="noreferrer">Donate</a>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -367,7 +367,7 @@
           {% endfor %}
         </ul>
         <div class="col-12 mt-4 read-more" style="text-align: start;">
-          <a class="px-2 text-decoration-none font-monospace just" href="/initiatives">All Initiatives</a>
+          <b><a class="px-2 text-decoration-none font-monospace just btn text-primary" href="/initiatives">All Initiatives</a></b>
         </div>
         <!-- Section: Timeline -->
       </div>
@@ -472,6 +472,9 @@
         </li>
         {%endfor%}        
         </ul>
+        <div class="col-12 my-4 read-more" style="text-align: center;">
+          <b><a class="px-2 btn text-primary" href="/volunteering-options">View all</a></b>
+        </div>
       </div>
     </div>
   </section>
@@ -489,7 +492,7 @@
               <div class="card p-2" style="width:auto; height: 100%;">
                 <img class="card-img-top" src="{{ i.thumbnail.url }}" alt="Image" style="width:100%; height:auto;" />
                 <div class="card-body">
-                  <h5 class="card-title">{{ i.title }}</h5>
+                  <h5 class="card-title"><b>{{ i.title }}</b></h5>
                   <p class="card-text">{{ i.excerpt|truncatechars:100 }}</p>
                   <small class="text-muted">{{ i.publish }}</small>
                   <a href="/category/blog/{{ i.url }}" class="btn btn-warning">View More</a>
@@ -499,7 +502,7 @@
           {% endfor %}
         </div>
         <div class="col-12 my-4 read-more" style="text-align: center;">
-          <a class="px-2 text-decoration-none font-monospace just" href="/category">View all</a>
+          <b><a class="px-2 btn text-primary" href="/category">View all</a></b>
         </div>
       </div>
     

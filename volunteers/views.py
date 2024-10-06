@@ -26,3 +26,4 @@ def ministry_detail(request, url):
         'form': form,
         'other_ministries': other_ministries,  # Pass the list of other ministries to the template
     })
+ 

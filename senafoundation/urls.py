@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('initiatives.urls')), 
     path('', include('impact_stories.urls')), 
     path('', include('non_blog.urls')), 
-    path('', include('volunteers.urls')), 
+    # path('', include('volunteers.urls')), 
+    path('', include('volunteer_forms.urls')), 
     # path('', include('donations.urls')), 
 ]

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'impact_stories',
     'volunteers',
     'non_blog',
+    'volunteer_forms',
     # 'donations',
 ]
 
