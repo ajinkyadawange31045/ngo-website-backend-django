@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'non_blog',
     'volunteer_forms',
     # 'donations',
+    'contacts',
 ]
 
 MIDDLEWARE = [

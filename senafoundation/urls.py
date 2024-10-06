@@ -25,5 +25,5 @@ urlpatterns = [
     path('', include('non_blog.urls')), 
     # path('', include('volunteers.urls')), 
     path('', include('volunteer_forms.urls')), 
-    # path('', include('donations.urls')), 
+    path('', include('contacts.urls')), 
 ]

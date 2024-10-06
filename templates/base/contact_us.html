@@ -1,0 +1,183 @@
+{% extends 'base/base_other_pages.html' %}
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+{% block content %}
+<style>
+    .custom-page-bar {
+        background-color: #f8f9fa; /* Light background for the page bar */
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .custom-alert {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1050;
+        max-width: 350px;
+    }
+
+    .custom-container {
+        max-width: 98%;
+        margin: 30px auto; /* Adds more spacing from the edges */
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds shadow for visual depth */
+        background-color: #ffffff; /* Ensures the background stays clean */
+        border-radius: 15px;
+    }
+
+    .custom-img {
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+        border-radius: 10px;
+    }
+
+    .custom-form-label {
+        font-weight: bold;
+    }
+
+    .custom-needs-validation .form-control:invalid {
+        border-color: #dc3545;
+    }
+
+    .custom-needs-validation .invalid-feedback {
+        display: block;
+    }
+
+    .custom-submit-btn {
+        width: 100%; /* Full-width on smaller screens */
+        padding: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .custom-submit-btn {
+            width: auto; /* Auto-width on larger screens */
+        }
+    }
+
+    .other-volunteer-options {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 15px;
+    }
+    .other-volunteer-options h4 {
+        margin-bottom: 20px;
+    }
+    .volunteer-list-item {
+        padding: 10px 0;
+    }
+</style>
+<div class="custom-page-bar">
+    <div class="px-3">
+        <a href="/" class="text-decoration-none">Home</a> /
+        <span class="text-decoration-none">Contact Us</span>
+    </div>
+</div>
+
+<div class="custom-container">
+    {% if messages %}
+    <div class="custom-alert">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    
+    <h3 class="my-3">Thank you for your time.</h3>
+
+    <form method="post" class="custom-needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_name" class="custom-form-label" data-bs-toggle="tooltip" title="Please enter your full name.">Name</label>
+            {{ form.name }}
+            <div class="invalid-feedback">
+                {% for error in form.name.errors %}{{ error }}<br>{% endfor %}
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="id_email" class="custom-form-label" data-bs-toggle="tooltip" title="We will use this email to contact you.">Email</label>
+            {{ form.email }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}{{ error }}<br>{% endfor %}
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="id_role" class="custom-form-label" data-bs-toggle="tooltip" title="Specify your role as a volunteer.">subject</label>
+            {{ form.subject }}
+            <div class="invalid-feedback">
+                {% for error in form.subject.errors %}{{ error }}<br>{% endfor %}
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="id_message" class="custom-form-label" data-bs-toggle="tooltip" title="Provide any message or suggestions here.">Message</label>
+            {{ form.message }}
+            <div class="invalid-feedback">
+                {% for error in form.message.errors %}{{ error }}<br>{% endfor %}
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary custom-submit-btn">Submit</button>
+    </form>
+    
+    <!-- Add this script to activate tooltips -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
+    
+
+    {% if form.errors %}
+    <div class="alert alert-danger mt-4">
+        <p>Please correct the following errors:</p>
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    
+</div>
+
+<script>
+    // Auto-dismiss success message after 3 seconds
+    setTimeout(() => {
+        const successMessage = document.querySelector('.alert-success');
+        if (successMessage) {
+            successMessage.classList.remove('show');
+        }
+    }, 3000);
+
+    window.onload = function() {
+        // Clear all form fields
+        var form = document.querySelector('form');
+        if (form) {
+            form.reset();
+        }
+    }
+</script>
+
+{% endblock %}
