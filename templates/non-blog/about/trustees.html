@@ -14,58 +14,54 @@
     <p class="text-center mb-5">Meet the passionate individuals who drive our mission forward with their expertise and dedication.</p>
 
     <div class="row">
-        <!-- Core Member 1 -->
+        <!-- Loop through Core Members -->
+        {% for trustee in trustees %}
         <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card shadow-sm text-center">
-                <img src="https://via.placeholder.com/200" class="card-img-top rounded-circle mx-auto mt-3" alt="Member 1" style="width: 150px; height: 150px;">
+            <div class="card shadow-sm text-center team-member">
+                {% if trustee.image %}
+                    <img src="{{ trustee.image.url }}" alt="{{ trustee.name }}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px;">
+                {% else %}
+                    <img src="https://via.placeholder.com/200" alt="Placeholder for {{ trustee.name }}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px;">
+                {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">Dr. Emily Chen</h5>
-                    <p class="card-text">Expert in Educational Development</p>
-                    <p class="mt-2">“Empowering every child with the tools they need for success.”</p>
+                    <h5 class="card-title">{{ trustee.name }}</h5>
+                    <p class="card-text">{{ trustee.designation }}</p>
+                    <p class="mt-2">{{ trustee.about }}</p>
                 </div>
             </div>
         </div>
-
-        <!-- Core Member 2 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card shadow-sm text-center">
-                <img src="https://via.placeholder.com/200" class="card-img-top rounded-circle mx-auto mt-3" alt="Member 2" style="width: 150px; height: 150px;">
-                <div class="card-body">
-                    <h5 class="card-title">Mr. John Smith</h5>
-                    <p class="card-text">Director of Community Engagement</p>
-                    <p class="mt-2">“Building bridges to connect communities.”</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Core Member 3 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card shadow-sm text-center">
-                <img src="https://via.placeholder.com/200" class="card-img-top rounded-circle mx-auto mt-3" alt="Member 3" style="width: 150px; height: 150px;">
-                <div class="card-body">
-                    <h5 class="card-title">Ms. Alice Johnson</h5>
-                    <p class="card-text">Head of Outreach Programs</p>
-                    <p class="mt-2">“Creating opportunities for those in need.”</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Core Member 4 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card shadow-sm text-center">
-                <img src="https://via.placeholder.com/200" class="card-img-top rounded-circle mx-auto mt-3" alt="Member 4" style="width: 150px; height: 150px;">
-                <div class="card-body">
-                    <h5 class="card-title">Mr. Michael Brown</h5>
-                    <p class="card-text">Chief Technology Officer</p>
-                    <p class="mt-2">“Innovating for a better tomorrow.”</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <div class="text-center mt-5">
         <a href="/contact-us" class="btn btn-primary">Get in Touch with Our Core Members</a>
     </div>
 </div>
+
+{% block extra_js %}
+<style>
+    .team-member {
+        opacity: 0; /* Start invisible */
+        transform: translateY(20px); /* Start slightly lower */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Transition effect */
+    }
+
+    .team-member.visible {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Move back to original position */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const members = document.querySelectorAll('.team-member');
+        members.forEach((member, index) => {
+            setTimeout(() => {
+                member.classList.add('visible'); // Add visible class with a delay
+            }, index * 200); // Delay for each member (200ms)
+        });
+    });
+</script>
+{% endblock %}
 
 {% endblock %}

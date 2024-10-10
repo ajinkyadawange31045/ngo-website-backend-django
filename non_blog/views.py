@@ -1,17 +1,21 @@
 from django.shortcuts import render
+from .models import Trustees, Leading_Team, Advisory
 
 # Create your views here.
 def about_us(request):
     return render(request,'non-blog/about/about.html')
 
 def advisory_board(request):
-    return render(request,'non-blog/about/advisory_board.html')
+    advisory = Advisory.objects.all()
+    return render(request,'non-blog/about/advisory_board.html', {'advisory': advisory})
 
 def leadership(request):
-    return render(request,'non-blog/about/leadership_team.html')
+    leading_team = Leading_Team.objects.all()
+    return render(request,'non-blog/about/leadership_team.html',{'leading_team': leading_team})
 
 def trustees(request):
-    return render(request,'non-blog/about/trustees.html')
+    trustees = Trustees.objects.all()
+    return render(request,'non-blog/about/trustees.html',{'trustees':trustees,})
 
 def vision_and_mission(request):
     return render(request,'non-blog/about/vision_and_mission.html')

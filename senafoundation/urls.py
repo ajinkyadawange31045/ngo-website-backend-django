@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+
 # from gallery.views import home, details, addlike
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +28,8 @@ urlpatterns = [
     path('', include('volunteer_forms.urls')), 
     path('', include('contacts.urls')), 
 ]
+
+from django.conf.urls.static import static
+from django.conf import settings
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

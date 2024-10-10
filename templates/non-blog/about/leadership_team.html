@@ -14,43 +14,54 @@
     <p class="text-center">Our Leadership Team is committed to guiding our mission and ensuring the success of our initiatives.</p>
 
     <div class="row">
-        <!-- Leadership Team Member 1 -->
+        <!-- Loop through Leadership Team Members -->
+        {% for leader in leading_team %}
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 1">
+            <div class="card shadow-sm advisor-card">
+                {% if leader.image %}
+                    <img src="{{ leader.image.url }}" alt="{{ leader.name }}" class="card-img-top">
+                {% else %}
+                    <img src="https://via.placeholder.com/300" alt="Placeholder for {{ leader.name }}" class="card-img-top">
+                {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">Dr. Sarah Thompson</h5>
-                    <p class="card-text">CEO & Founder. With over 15 years of experience in the nonprofit sector, Dr. Thompson leads our organization with passion and vision.</p>
+                    <h5 class="card-title">{{ leader.name }}</h5>
+                    <p class="card-text">{{ leader.work }}</p>
+                    <p class="card-text">{{ leader.about }}</p>
                 </div>
             </div>
         </div>
-
-        <!-- Leadership Team Member 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 2">
-                <div class="card-body">
-                    <h5 class="card-title">Mr. David Williams</h5>
-                    <p class="card-text">Chief Operating Officer. Mr. Williams ensures smooth operations across all programs, with a focus on efficiency and impact.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Leadership Team Member 3 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 3">
-                <div class="card-body">
-                    <h5 class="card-title">Ms. Linda Garcia</h5>
-                    <p class="card-text">Chief Financial Officer. Ms. Garcia oversees our financial strategy, ensuring sustainability and responsible stewardship of resources.</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <div class="text-center mt-5">
         <a href="/contact-us" class="btn btn-primary">Contact Our Leadership Team</a>
     </div>
 </div>
+
+{% block extra_js %}
+<style>
+    .advisor-card {
+        opacity: 0; /* Start invisible */
+        transform: translateY(20px); /* Start slightly lower */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Transition effect */
+    }
+
+    .advisor-card.visible {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Move back to original position */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.advisor-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible'); // Add visible class with a delay
+            }, index * 200); // Delay for each card (200ms)
+        });
+    });
+</script>
+{% endblock %}
 
 {% endblock %}

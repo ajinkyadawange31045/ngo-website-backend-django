@@ -14,38 +14,22 @@
     <p class="text-center">Our Advisory Board comprises industry experts who guide us in achieving our mission.</p>
 
     <div class="row">
-        <!-- Advisory Board Member 1 -->
+        <!-- Advisory Board Members -->
+        {% for advisor in advisory %}
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 1">
+            <div class="card shadow-sm advisor-card">
+                {% if advisor.image %}
+                <img src="{{ advisor.image.url }}" alt="{{ advisor.name }}" class="card-img-top">
+                {% else %}
+                <img src="https://via.placeholder.com/300" alt="Placeholder for {{ advisor.name }}" class="card-img-top">
+                {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">Dr. John Smith</h5>
-                    <p class="card-text">Expert in Educational Policy and Leadership. Dr. Smith has over 20 years of experience in the field of education and has published numerous papers on educational reforms.</p>
+                    <h5 class="card-title">{{ advisor.name }}</h5>
+                    <p class="card-text">{{ advisor.about }}</p>
                 </div>
             </div>
         </div>
-
-        <!-- Advisory Board Member 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 2">
-                <div class="card-body">
-                    <h5 class="card-title">Ms. Emily Johnson</h5>
-                    <p class="card-text">Specialist in Community Development. With a decade of experience, Ms. Johnson focuses on sustainable development initiatives in underprivileged communities.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Advisory Board Member 3 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Member 3">
-                <div class="card-body">
-                    <h5 class="card-title">Mr. Michael Brown</h5>
-                    <p class="card-text">Financial Advisor and Philanthropist. Mr. Brown brings financial expertise to our organization, helping to ensure transparency and effective resource management.</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <div class="text-center mt-5">
@@ -55,3 +39,28 @@
 
 {% endblock %}
 
+{% block extra_js %}
+<style>
+    .advisor-card {
+        opacity: 0; /* Start invisible */
+        transform: translateY(20px); /* Start slightly lower */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Transition effect */
+    }
+
+    .advisor-card.visible {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Move back to original position */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.advisor-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible'); // Add visible class with a delay
+            }, index * 200); // Delay for each card (200ms)
+        });
+    });
+</script>
+{% endblock %}

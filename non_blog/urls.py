@@ -4,10 +4,9 @@ from django.urls import path,include
 from .views import *
 urlpatterns = [
     path('about-us/',about_us,name="aboutus" ),
-    path('advisory-board/',advisory_board,name="advisory_board" ),
-    path('advisory-board/',advisory_board,name="advisory_board" ),
-    path('leadership-team', leadership ,name="leadership" ),
-    path('board-of-members/', trustees ,name="trustees" ),
+    path('advisory-board/',advisory_board,name="leading_team" ),
+    path('leadership-team', leadership ,name="leading_team" ),
+    path('board-of-trustees/', trustees ,name="trustees" ),
     path('vision-and-mission/', vision_and_mission ,name="vision_and_mission" ),
     path('colleges-covered/', colleges_covered ,name="colleges_covered" ),
     path('educational-seminars/', educational_seminars ,name="educational_seminars" ),
@@ -21,5 +20,9 @@ urlpatterns = [
     # path('//',  ,name="" ),
 ]
 
+from django.conf.urls.static import static
+from django.conf import settings
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
