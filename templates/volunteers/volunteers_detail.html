@@ -6,12 +6,6 @@
 
 {% block content %}
 <style>
-    .custom-page-bar {
-        background-color: #f8f9fa; /* Light background for the page bar */
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
 
     .custom-alert {
         position: fixed;
@@ -88,7 +82,7 @@
     }
 </style>
 
-<div class="custom-page-bar">
+<div class="page-bar bg-light p-3">
     <div class="px-3">
         <a href="/" class="text-decoration-none">Home</a> / <a href="/volunteering-options" class="text-decoration-none">Volunteer-for</a> / 
         <span class="text-decoration-none">{{ ministry.title }}</span>

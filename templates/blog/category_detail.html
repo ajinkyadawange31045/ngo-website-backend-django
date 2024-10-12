@@ -1,22 +1,7 @@
 {% extends "base/base_other_pages.html" %}
 
 {% block content %}
-<style>
-    .page-bar {
-        background-color: #f8f9fa; /* Light background for the navigation bar */
-        padding: 10px 15px;
-        margin-bottom: 20px;
-        border-radius: 5px; /* Rounded corners */
-    }
-
-    .page-bar a {
-        font-weight: 500;
-        color: #007bff; /* Bootstrap primary color */
-    }
-
-    .page-bar a:hover {
-        text-decoration: underline; /* Underline effect on hover */
-    }
+<style> 
 
     .container {
         margin-top: 30px;
@@ -112,7 +97,7 @@
     
 </style>
 
-<div class="page-bar">
+<div class="page-bar bg-light p-3">
     <div class="px-3">
         <a href="/" class="text-decoration-none">Home</a> /
         <a href="{% url 'category_page' %}" class="text-decoration-none">Categories</a> /

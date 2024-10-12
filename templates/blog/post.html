@@ -56,12 +56,7 @@
       background-color: orange;
       z-index: 9998;
     }
-
-    .page-bar {
-      min-height: 3em;    
-      align-content: center;
-      text-decoration: none;
-    }
+ 
 
     /* Responsive Image */
     img {
@@ -74,7 +69,7 @@
 {% block content %}
   {% load social_share %}
 
-  <div class="page-bar">
+  <div class="page-bar bg-light p-3">
     <div class="px-3">
       <a href="/" class="text-decoration-none">Home</a> /
       <a href="{% url 'category_page' %}" class="text-decoration-none">Categories</a> /
