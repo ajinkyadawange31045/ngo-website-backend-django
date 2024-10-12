@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Post
+from .models import Category, Post,Author
 from mptt.admin import MPTTModelAdmin
 
 # Register your models here.
@@ -8,6 +8,10 @@ from mptt.admin import MPTTModelAdmin
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('cat_id', 'title', 'description', 'url', 'add_date')
     search_fields = ('title',)
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('author_id', 'name', 'insta')
+    search_fields = ('name',)
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title',)
@@ -27,6 +31,7 @@ class MPTTModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Author, AuthorAdmin)
 
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import GroupAdmin

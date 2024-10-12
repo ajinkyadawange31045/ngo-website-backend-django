@@ -190,7 +190,7 @@
         {% if category != cat %}  <!-- Avoid linking to the current category -->
         <li>
             <h4>
-                <a href="{% url 'category_detail' category.url %}" class="text-decoration-none">{{ cat.title }}</a>
+                <a href="{% url 'category_detail' category.url %}" class="text-decoration-none">{{ category.title }}</a>
             </h4>
         </li>
         {% endif %}

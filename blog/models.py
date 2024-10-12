@@ -43,6 +43,18 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+# authot for respective posts
+class Author(models.Model):
+    author_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=40)
+    image  = models.ImageField(upload_to='author/',null=True)
+    about = models.TextField(max_length=500, null=True)
+    linkedin = models.CharField(max_length=300,null=True)
+    insta = models.CharField(max_length=300,null=True)
+    def __str__(self):
+        return self.name
+
+
 # post with image for publishing
 class Post(models.Model):
     post_id = models.AutoField(primary_key=True)
@@ -54,6 +66,9 @@ class Post(models.Model):
         ('published', 'Published'),
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE,related_name='author',null=True)
+    # author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='author', null=True, blank=True)
+
     title = models.CharField(max_length=40)
     blog_views =models.IntegerField(default=0,editable=False)
     main_long_title = models.CharField(max_length=250)

@@ -488,17 +488,42 @@
         </div>
         <div class="row">
           {% for i in updates %}
-            <div class="col-lg-3 col-md-12 my-2">
-              <div class="card p-2" style="width:auto; height: 100%;">
+          <div class="col-lg-3 col-md-12 my-2">
+            <div class="card p-2" style="width:auto; height: 100%;">
                 <img class="card-img-top" src="{{ i.thumbnail.url }}" alt="Image" style="width:100%; height:auto;" />
                 <div class="card-body">
-                  <h5 class="card-title"><b>{{ i.title }}</b></h5>
-                  <p class="card-text">{{ i.excerpt|truncatechars:100 }}</p>
-                  <small class="text-muted">{{ i.publish }}</small>
-                  <a href="/category/blog/{{ i.url }}" class="btn btn-warning">View More</a>
+                    <h5 class="card-title"><b>{{ i.title }}</b></h5>
+                    <p class="card-text">{{ i.excerpt|truncatechars:100 }}</p>
+                    <div class="d-flex align-items-center mb-2">
+                        <small>
+                         <a href="javascript:void(0);" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#authorModal{{ i.author.author_id }}">
+                          <img src="{{ i.author.image.url }}" alt="Author Image" class="rounded-circle" style="width:40px; height:40px; margin-right: 10px;" >
+                        <span>{{ i.author.name }}</span>
+                        </a>
+                        </small>
+                    </div>
+                    <small class="text-muted mb-2">{{ i.publish }}</small>
+                    <a href="/category/blog/{{ i.url }}" class="btn btn-warning my-2">View More</a>
                 </div>
-              </div>
             </div>
+        </div>
+        
+        <!-- Author Modal -->
+        <div class="modal fade" id="authorModal{{ i.author.author_id }}" tabindex="-1" aria-labelledby="authorModalLabel{{ i.author.author_id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="authorModalLabel{{ i.author.author_id }}">{{ i.author.name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="{{ i.author.image.url }}" alt="Author Image" class="rounded-circle" style="width:100px; height:100px;">
+                        <p class="mt-3">{{ i.author.about }}</p> <!-- Display author's about section here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
           {% endfor %}
         </div>
         <div class="col-12 my-4 read-more" style="text-align: center;">
