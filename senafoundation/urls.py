@@ -27,6 +27,9 @@ urlpatterns = [
     # path('', include('volunteers.urls')), 
     path('', include('volunteer_forms.urls')), 
     path('', include('contacts.urls')), 
+    path('', include('fundraising.urls')), 
+    path('captcha/', include('captcha.urls')),
+    
 ]
 
 from django.conf.urls.static import static

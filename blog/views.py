@@ -24,7 +24,7 @@ from initiatives.models import Initiative
 from impact_stories.models import Stories,DriveImage
 # from volunteers.models import Ministry
 from volunteer_forms.models import Ministry
-  #
+from fundraising.models import FundraisingCampaign
 
 
 def home(request):
@@ -39,7 +39,9 @@ def home(request):
     stories = Stories.objects.filter(status='published')
     ministry = Ministry.objects.all()
     # data
-    data = {'updates':updates,'initiatives':initiatives,'stories':stories,'ministry':ministry,'cat_1':first_4_categories,'cat_r':remaining_categoreis,'cat1':categories,}
+
+    campaigns = FundraisingCampaign.objects.all()
+    data = {'updates':updates,'initiatives':initiatives,'stories':stories,'ministry':ministry,'cat_1':first_4_categories,'cat_r':remaining_categoreis,'cat1':categories,'campaigns':campaigns,}
     return render(request, "blog/index.html",data)
 
 def what_we_do1(request):

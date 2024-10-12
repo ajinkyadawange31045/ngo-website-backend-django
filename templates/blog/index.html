@@ -168,154 +168,56 @@
   <!-- Fundraising Campaigns -->
   <section class="impact_wrap">
     <div class="container py-3 align-content-center">
-      <div class="row">
-        <div class="col-12 text-center mb-30">
-          <h2 class="montregular heading_section color-white">Fundraising Campaigns</h2>
+        <div class="row">
+            <div class="col-12 text-center mb-30">
+                <h2 class="montregular heading_section color-white">Fundraising Campaigns</h2>
+            </div>
         </div>
-      </div>
-      <!-- Bootstrap Carousel -->
-      <div id="fundraisingCarousel" class="carousel slide stories-section" data-bs-ride="carousel">
-        <div class="carousel-inner my-3">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-lg-2 col-sm-12 mb-3"></div>
-              <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
-                <div class="card p-2" style="height: 100%;">
-                  <img class="card-img-top" src="../images/1.jpeg" alt="Card image" style="width:100%; height:auto;" />
-                  <div class="card-body">
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-animated bg-success progress-bar-striped btn btn-primary" style="width:30%" data-bs-toggle="tooltip" title="30%"></div>
+        <!-- Bootstrap Carousel -->
+        <div id="fundraisingCarousel" class="carousel slide stories-section" data-bs-ride="carousel">
+            <div class="carousel-inner my-3">
+                {% for campaign in campaigns %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="row">
+                        <div class="col-lg-2 col-sm-12 mb-3"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                            <div class="card p-2" style="height: 100%;">
+                                <img class="card-img-top" src="{{ campaign.image.url }}" alt="{{ campaign.title }}" style="width:100%; height:auto;" />
+                                <div class="card-body">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-animated bg-success progress-bar-striped"
+                                             style="width:{{ campaign.get_progress_percentage }}%"
+                                             data-bs-toggle="tooltip" title="{{ campaign.get_progress_percentage }}%"></div>
+                                    </div>
+                                    <div style="text-align: center;" class="justify-content-center align-items-center">
+                                        <p class="card-text pt-3 pb-0">
+                                            Raised: Rs. {{ campaign.raised_amount }} <br />Goal: Rs. {{ campaign.goal_amount }}
+                                        </p>
+                                        <hr />
+                                        <h5 class="card-title pt-0" style="font-weight: bold;">{{ campaign.title }}</h5>
+                                        <a href="{% url 'donation_page' campaign.id %}" class="btn btn-warning">Donate Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-12 mb-3"></div>
                     </div>
-                    <div style="text-align: center;" class="justify-content-center align-items-center">
-                      <p class="card-text pt-3 pb-0">
-                        Raised: Rs. 4224242 <br />Goal: Rs. 4224242
-                      </p>
-                      <hr />
-                      <h5 class="card-title pt-0" style="font-weight: bold;">Fund a students free education</h5>
-                      <a href="#" class="btn btn-warning">Donate Now</a>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <!--  <div class="col-lg-2 col-sm-12 mb-3">
-                                
-                            </div>  -->
-              <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
-                <div class="card p-2" style="height: 100%;">
-                  <img class="card-img-top" src="../images/1.jpeg" alt="Card image" style="width:100%; height:auto;" />
-                  <div class="card-body">
-                    <div class="progress-bar progress-bar-animated bg-success progress-bar-striped btn btn-primary" style="width:30%" data-bs-toggle="tooltip" title="30%"></div>
-                    <div style="text-align: center;" class="justify-content-center align-items-center">
-                      <p class="card-text pt-3 pb-0">
-                        Raised: Rs. 4224242 <br />Goal: Rs. 4224242
-                      </p>
-                      <hr />
-                      <h5 class="card-title pt-0" style="font-weight: bold;">Fund a students free education</h5>
-                      <a href="#" class="btn btn-warning">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-12 mb-3"></div>
+                {% endfor %}
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-12 mb-3"></div>
-              <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
-                <div class="card p-2" style="height: 100%;">
-                  <img class="card-img-top" src="../images/1.jpeg" alt="Card image" style="width:100%; height:auto;" />
-                  <div class="card-body">
-                    <div class="progress-bar progress-bar-animated bg-success progress-bar-striped btn btn-primary" style="width:30%" data-bs-toggle="tooltip" title="30%"></div>
-                    <div style="text-align: center;" class="justify-content-center align-items-center">
-                      <p class="card-text pt-3 pb-0">
-                        Raised: Rs. 4224242 <br />Goal: Rs. 4224242
-                      </p>
-                      <hr />
-                      <h5 class="card-title pt-0" style="font-weight: bold;">Fund a students free education</h5>
-                      <a href="#" class="btn btn-warning">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--  <div class="col-lg-2 col-sm-12 mb-3">
-                                
-                            </div>  -->
-              <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
-                <div class="card p-2" style="height: 100%;">
-                  <img class="card-img-top" src="../images/1.jpeg" alt="Card image" style="width:100%; height:auto;" />
-                  <div class="card-body">
-                    <div class="progress-bar progress-bar-animated bg-success progress-bar-striped btn btn-primary" style="width:30%" data-bs-toggle="tooltip" title="30%"></div>
-                    <div style="text-align: center;" class="justify-content-center align-items-center">
-                      <p class="card-text pt-3 pb-0">
-                        Raised: Rs. 4224242 <br />Goal: Rs. 4224242
-                      </p>
-                      <hr />
-                      <h5 class="card-title pt-0" style="font-weight: bold;">Fund a students free education</h5>
-                      <a href="#" class="btn btn-warning">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-12 mb-3"></div>
-            </div>
-          </div>
 
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-12 mb-3"></div>
-              <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
-                <div class="card p-2" style="height: 100%;">
-                  <img class="card-img-top" src="../images/1.jpeg" alt="Card image" style="width:100%; height:auto;" />
-                  <div class="card-body">
-                    <div class="progress-bar progress-bar-animated bg-success progress-bar-striped btn btn-primary" style="width:30%" data-bs-toggle="tooltip" title="30%"></div>
-                    <div style="text-align: center;" class="justify-content-center align-items-center">
-                      <p class="card-text pt-3 pb-0">
-                        Raised: Rs. 4224242 <br />Goal: Rs. 4224242
-                      </p>
-                      <hr />
-                      <h5 class="card-title pt-0" style="font-weight: bold;">Fund a students free education</h5>
-                      <a href="#" class="btn btn-warning">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--  <div class="col-lg-2 col-sm-12 mb-3">
-                                
-                            </div>  -->
-              <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
-                <div class="card p-2" style="height: 100%;">
-                  <img class="card-img-top" src="../images/1.jpeg" alt="Card image" style="width:100%; height:auto;" />
-                  <div class="card-body">
-                    <div class="progress-bar progress-bar-animated bg-success progress-bar-striped btn btn-primary" style="width:30%" data-bs-toggle="tooltip" title="30%"></div>
-                    <div style="text-align: center;" class="justify-content-center align-items-center">
-                      <p class="card-text pt-3 pb-0">
-                        Raised: Rs. 4224242 <br />Goal: Rs. 4224242
-                      </p>
-                      <hr />
-                      <h5 class="card-title pt-0" style="font-weight: bold;">Fund a students free education</h5>
-                      <a href="#" class="btn btn-warning">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-12 mb-3"></div>
-            </div>
-          </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#fundraisingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#fundraisingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-
-        <!-- Carousel Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#fundraisingCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#fundraisingCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
     </div>
-  </section>
+</section>
 
 
   {% comment %}Our initiatives{% endcomment %}

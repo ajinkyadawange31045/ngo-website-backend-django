@@ -1,0 +1,25 @@
+<!-- templates/fundraising/payment.html -->
+{% extends "base/base_other_pages.html" %}
+
+{% block content %}
+    <div class="container py-5">
+        <h2>Confirm Your Donation</h2>
+        <p>You are about to donate Rs. {{ amount }} to "{{ campaign_title }}".</p>
+        <form action="YOUR_PAYMENT_URL" method="POST">
+            <script src="https://checkout.razorpay.com/v1/checkout.js" 
+                    data-key="rzp_test_9hLh9fBj8OYOYg" 
+                    data-amount="{{ amount|floatformat:0 }}" 
+                    data-currency="INR" 
+                    data-order_id="{{ order_id }}" 
+                    data-buttontext="Pay Now" 
+                    data-name="{{ campaign_title }}" 
+                    data-description="Donation for {{ campaign_title }}" 
+                    data-image="YOUR_LOGO_URL" 
+                    data-prefill.name="" 
+                    data-prefill.email="" 
+                    data-theme.color="#F37254"></script>
+            <input type="hidden" name="order_id" value="{{ order_id }}">
+            <input type="hidden" name="amount" value="{{ amount }}">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base/base_other_pages.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Donate to {{ campaign.title }}</h2>
+    <form method="POST" action="{% url 'donation_page' campaign.id %}" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Donate</button>
+    </form>
+
+    {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

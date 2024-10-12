@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django_social_share',
     'mptt',
     'blog',
+    'captcha',
     'initiatives',
     'impact_stories',
     'volunteers',
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     'volunteer_forms',
     # 'donations',
     'contacts',
+    'fundraising',
 ]
 
 MIDDLEWARE = [
